@@ -20,10 +20,10 @@ export function Features() {
             <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
               Recursos
             </p>
-            <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white md:text-5xl lg:text-[3.5rem]">
+            <h2 className="font-display text-[2.25rem] font-bold tracking-[-0.035em] text-white md:text-4xl lg:text-[2.85rem]">
               Tudo que o clube
               <br />
-              <span className="text-white/40">precisa na estrada</span>
+              <span className="text-white/45">precisa na estrada</span>
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-secondary md:pb-1 md:text-[15px]">

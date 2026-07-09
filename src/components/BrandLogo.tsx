@@ -52,9 +52,7 @@ export function BrandLogo({
       )}
 
       {withWordmark && (
-        <span
-          className={`brand-wordmark text-white ${wordmarkClassName}`}
-        >
+        <span className={`brand-wordmark text-white ${wordmarkClassName}`}>
           Chev<span className="text-primary">ron</span>
         </span>
       )}

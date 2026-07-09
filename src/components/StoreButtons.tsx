@@ -13,12 +13,15 @@ function AppleIcon({ className = "w-6 h-6" }: { className?: string }) {
 function PlayIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z" />
+      <path d="M3.6 1.8 13.8 12 3.6 22.2a1 1 0 0 1-.6-.92V2.72a1 1 0 0 1 .6-.92Zm10.9 10.9 2.3 2.3-10.94 6.33 8.64-8.63Zm3.2-3.2 2.8 1.63a1 1 0 0 1 0 1.73l-2.81 1.63L15.2 12l2.5-2.5ZM5.86 2.66 16.8 9l-2.3 2.3-8.64-8.64Z" />
     </svg>
   );
 }
 
 type Size = "md" | "lg";
+
+const baseBtn =
+  "store-btn group inline-flex items-center gap-3.5 rounded-2xl bg-[#111] px-5 text-left text-white shadow-[0_10px_30px_rgba(0,0,0,0.45),0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#161616] hover:shadow-[0_16px_40px_rgba(0,0,0,0.55),0_0_24px_rgba(0,255,136,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] active:translate-y-0";
 
 export function StoreButtons({
   size = "md",
@@ -29,9 +32,10 @@ export function StoreButtons({
   className?: string;
   centered?: boolean;
 }) {
-  const pad = size === "lg" ? "px-6 py-4" : "px-5 py-3";
-  const title = size === "lg" ? "text-base" : "text-sm";
-  const sub = size === "lg" ? "text-[11px]" : "text-[10px]";
+  const pad = size === "lg" ? "py-3.5 pr-7 pl-4" : "py-3 pr-6 pl-3.5";
+  const icon = size === "lg" ? "h-8 w-8" : "h-7 w-7";
+  const title = size === "lg" ? "text-[15px]" : "text-sm";
+  const sub = size === "lg" ? "text-[10px]" : "text-[9px]";
 
   return (
     <div
@@ -41,15 +45,17 @@ export function StoreButtons({
         href={STORE_LINKS.appStore}
         target="_blank"
         rel="noopener noreferrer"
-        className={`store-btn glass-panel-strong inline-flex items-center gap-3 rounded-3xl ${pad}`}
+        className={`${baseBtn} ${pad}`}
         aria-label="Baixar na App Store"
       >
-        <AppleIcon className={size === "lg" ? "h-8 w-8" : "h-7 w-7"} />
-        <span className="text-left leading-tight">
-          <span className={`block uppercase tracking-wider text-secondary ${sub}`}>
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black shadow-[0_4px_12px_rgba(0,0,0,0.25)] transition group-hover:scale-105">
+          <AppleIcon className={icon} />
+        </span>
+        <span className="leading-tight">
+          <span className={`block font-medium tracking-wide text-white/50 ${sub}`}>
             Baixar na
           </span>
-          <span className={`block font-semibold text-white ${title}`}>
+          <span className={`block font-semibold tracking-tight ${title}`}>
             App Store
           </span>
         </span>
@@ -59,15 +65,17 @@ export function StoreButtons({
         href={STORE_LINKS.playStore}
         target="_blank"
         rel="noopener noreferrer"
-        className={`store-btn glass-panel-strong inline-flex items-center gap-3 rounded-3xl ${pad}`}
+        className={`${baseBtn} ${pad}`}
         aria-label="Disponível no Google Play"
       >
-        <PlayIcon className={size === "lg" ? "h-8 w-8" : "h-7 w-7"} />
-        <span className="text-left leading-tight">
-          <span className={`block uppercase tracking-wider text-secondary ${sub}`}>
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black shadow-[0_4px_12px_rgba(0,0,0,0.25)] transition group-hover:scale-105">
+          <PlayIcon className={icon} />
+        </span>
+        <span className="leading-tight">
+          <span className={`block font-medium tracking-wide text-white/50 ${sub}`}>
             Disponível no
           </span>
-          <span className={`block font-semibold text-white ${title}`}>
+          <span className={`block font-semibold tracking-tight ${title}`}>
             Google Play
           </span>
         </span>

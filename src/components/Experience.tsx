@@ -46,7 +46,7 @@ export function Experience() {
           <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
             Experiência
           </p>
-          <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white md:text-5xl lg:text-[3.5rem]">
+          <h2 className="font-display text-[2.25rem] font-bold tracking-[-0.035em] text-white md:text-4xl lg:text-[2.85rem]">
             Feito para
             <br />
             <span className="neon-text soft-glow">o asfalto.</span>

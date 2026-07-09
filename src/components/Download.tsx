@@ -18,43 +18,35 @@ export function Download() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const glowScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 1.12, 1]);
-  const cardY = useTransform(scrollYProgress, [0, 1], [30, -24]);
+  const cardY = useTransform(scrollYProgress, [0, 1], [24, -16]);
 
   return (
     <ScrollSection id="download" className="py-28 md:py-36" intensity={0.75}>
-      <div className="relative z-10 mx-auto max-w-3xl px-5 md:px-8" ref={ref}>
-        <motion.div
-          style={reduce ? undefined : { scale: glowScale }}
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[42vh] w-[42vh] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,255,136,0.14)_0%,transparent_70%)]"
-          aria-hidden
-        />
-
+      <div className="relative z-10 mx-auto max-w-2xl px-5 md:px-8" ref={ref}>
         <motion.div
           style={reduce ? undefined : { y: cardY }}
-          className="glass-panel-strong relative rounded-[2.25rem] px-6 py-12 text-center md:px-12 md:py-16"
+          className="relative rounded-[2rem] glass-panel-strong px-6 py-12 text-center md:px-10 md:py-14"
         >
-          <div className="mx-auto mb-7 flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-[22%] shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_40px_rgba(0,255,136,0.22)]">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center overflow-hidden rounded-[20%] shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_32px_rgba(0,255,136,0.18)]">
             <Image
               src="/images/app-icon.png"
               alt="Ícone Chevron"
-              width={72}
-              height={72}
+              width={64}
+              height={64}
               className="h-full w-full object-cover"
             />
           </div>
 
-          <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white sm:text-5xl md:text-[3.25rem]">
-            Baixe o Chevron.
-            <br />
-            <span className="neon-text soft-glow">Domine a estrada.</span>
+          <h2 className="font-display text-[2rem] font-bold tracking-[-0.035em] text-white sm:text-[2.35rem] md:text-[2.6rem]">
+            Leve o Chevron na estrada
           </h2>
 
-          <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-secondary">
-            iOS e Android. Rotas, navegação, chat e SOS — o motoclube no bolso.
+          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-secondary">
+            Disponível para iOS e Android. Rotas, navegação, chat e SOS do
+            motoclube — no bolso.
           </p>
 
-          <div className="mt-9 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <StoreButtons size="lg" centered />
           </div>
         </motion.div>

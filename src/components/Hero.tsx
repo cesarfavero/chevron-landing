@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import {
   motion,
   useReducedMotion,
@@ -10,6 +9,7 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import { StoreButtons } from "./StoreButtons";
+import { PhoneMockup } from "./PhoneMockup";
 import { STATS } from "@/lib/constants";
 
 const HeroCanvas = dynamic(() => import("./HeroCanvas"), {
@@ -29,9 +29,8 @@ export function Hero() {
 
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
-  const phoneY = useTransform(scrollYProgress, [0, 1], [0, 160]);
-  const phoneScale = useTransform(scrollYProgress, [0, 1], [1, 0.86]);
-  const phoneRotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
+  const phoneY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const phoneScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const statsOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
   const statsY = useTransform(scrollYProgress, [0, 0.5], [0, 40]);
 
@@ -65,7 +64,7 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.06, ease }}
-            className="font-display text-[2.85rem] font-extrabold leading-[0.96] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-[4.75rem]"
+            className="font-display text-[2.75rem] font-bold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-[4.5rem]"
           >
             A estrada
             <br />
@@ -78,10 +77,10 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.14, ease }}
-            className="mt-6 max-w-md text-[15px] font-normal leading-[1.65] text-secondary md:text-[16px]"
+            className="mt-6 max-w-md text-[15px] font-normal leading-[1.65] text-secondary md:text-base"
           >
             Rotas em grupo, navegação turn-by-turn, chat ao vivo e SOS.
-            O app do motoclube — nativo, limpo e feito pro asfalto.
+            O app do motoclube — nativo e feito pro asfalto.
           </motion.p>
 
           <motion.div
@@ -94,12 +93,11 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        <div className="relative order-1 flex h-[360px] items-center justify-center sm:h-[440px] md:order-2 md:col-span-6 md:h-[560px]">
-          <div className="pointer-events-none absolute inset-0 opacity-40">
+        {/* Floating phone — no photo plate / vignette */}
+        <div className="relative order-1 flex min-h-[380px] items-center justify-center sm:min-h-[440px] md:order-2 md:col-span-6 md:min-h-[520px]">
+          <div className="pointer-events-none absolute inset-0 opacity-25">
             <HeroCanvas />
           </div>
-
-          <div className="pointer-events-none absolute bottom-[12%] left-1/2 h-24 w-48 -translate-x-1/2 rounded-[100%] bg-primary/15 blur-3xl" />
 
           <motion.div
             style={
@@ -108,27 +106,14 @@ export function Hero() {
                 : {
                     y: phoneY,
                     scale: phoneScale,
-                    rotate: phoneRotate,
                   }
             }
             initial={reduce ? false : { opacity: 0, y: 36 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease }}
-            className="relative z-10 w-[220px] sm:w-[250px] md:w-[290px] float-soft will-change-transform"
+            className="relative z-10 will-change-transform"
           >
-            <div className="relative">
-              <div className="absolute -inset-6 rounded-[2.75rem] bg-primary/[0.07] blur-2xl" />
-              <div className="relative overflow-hidden rounded-[2.25rem] shadow-[0_40px_100px_rgba(0,0,0,0.75),0_12px_40px_rgba(0,255,136,0.08),inset_0_1px_0_rgba(255,255,255,0.12)]">
-                <Image
-                  src="/images/phone-mockup.jpg"
-                  alt="Chevron no iPhone"
-                  width={864}
-                  height={1152}
-                  priority
-                  className="h-auto w-full object-cover"
-                />
-              </div>
-            </div>
+            <PhoneMockup />
           </motion.div>
         </div>
       </div>
