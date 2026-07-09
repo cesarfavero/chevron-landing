@@ -7,7 +7,7 @@ type Props = {
   size?: number;
   className?: string;
   wordmarkClassName?: string;
-  /** use filled app icon (rounded) vs line mark */
+  /** app icon (filled) vs line mark */
   variant?: "app" | "mark";
 };
 
@@ -18,38 +18,24 @@ export function BrandLogo({
   wordmarkClassName = "",
   variant = "app",
 }: Props) {
+  const src =
+    variant === "mark" ? "/images/logo-mark.png" : "/images/app-icon.png";
+
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      {variant === "app" ? (
-        <span
-          className="relative shrink-0 overflow-hidden rounded-[22%]"
-          style={{ width: size, height: size }}
-        >
-          <Image
-            src="/images/app-icon.png"
-            alt="Chevron"
-            fill
-            sizes={`${size}px`}
-            className="object-cover"
-            priority
-          />
-        </span>
-      ) : (
-        <span
-          className="inline-flex shrink-0 items-center justify-center text-primary"
-          style={{ width: size, height: size }}
-          aria-hidden
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/logo-mark.svg"
-            alt=""
-            width={size}
-            height={size}
-            className="h-full w-full"
-          />
-        </span>
-      )}
+      <span
+        className="relative shrink-0 overflow-hidden rounded-[22%] shadow-[0_8px_24px_rgba(0,0,0,0.45)]"
+        style={{ width: size, height: size }}
+      >
+        <Image
+          src={src}
+          alt="Chevron"
+          fill
+          sizes={`${size}px`}
+          className="object-cover"
+          priority
+        />
+      </span>
 
       {withWordmark && (
         <span className={`brand-wordmark text-white ${wordmarkClassName}`}>
