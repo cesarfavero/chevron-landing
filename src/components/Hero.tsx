@@ -1,148 +1,100 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { useRef } from "react";
-import { StoreButtons } from "./StoreButtons";
-import { PhoneMockup } from "./PhoneMockup";
-import { STATS } from "@/lib/constants";
-
-const HeroCanvas = dynamic(() => import("./HeroCanvas"), {
-  ssr: false,
-  loading: () => null,
-});
-
-const ease = [0.22, 1, 0.36, 1] as const;
+import Image from "next/image";
+import { useGsap, gsap, ScrollTrigger } from "@/hooks/useGsap";
 
 export function Hero() {
-  const reduce = useReducedMotion();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
+  useGsap(() => {
+    gsap.fromTo(
+      ".hero-text",
+      { y: 80, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.1, stagger: 0.12, ease: "power3.out" },
+    );
+    gsap.fromTo(
+      ".hero-image-block",
+      { y: 60, opacity: 0, rotate: -6 },
+      { y: 0, opacity: 1, rotate: -2, duration: 1.2, delay: 0.15, ease: "power3.out" },
+    );
 
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
-  const phoneY = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const phoneScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-  const statsOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
-  const statsY = useTransform(scrollYProgress, [0, 0.5], [0, 40]);
+    gsap.utils.toArray<HTMLElement>(".hero-text").forEach((el) => {
+      const speed = Number(el.dataset.speed || 1);
+      gsap.to(el, {
+        yPercent: (1 - speed) * 40,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
 
   return (
     <section
-      id="top"
-      ref={ref}
-      className="relative min-h-[100svh] overflow-hidden pt-20"
+      id="topo"
+      className="hero-section relative flex min-h-[900px] flex-col justify-center overflow-hidden bg-[#d4d4d4] pt-20 text-black md:min-h-[980px]"
     >
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-4 px-5 pb-10 pt-6 md:grid-cols-12 md:gap-6 md:px-8 md:pb-16 md:pt-10">
-        <motion.div
-          style={
-            reduce ? undefined : { y: contentY, opacity: contentOpacity }
-          }
-          className="order-2 md:order-1 md:col-span-6"
+      {/* Massive background type */}
+      <div className="pointer-events-none absolute inset-0 z-10 flex w-full flex-col items-center justify-center px-4 text-white mix-blend-difference md:px-12">
+        <h1
+          className="hero-text w-full text-left text-[18vw] font-semibold uppercase leading-[0.75] tracking-tighter md:text-[16vw]"
+          data-speed="0.85"
         >
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full bg-black/40 px-3.5 py-1.5 text-[12px] font-medium tracking-wide text-primary shadow-float-soft backdrop-blur-md"
-          >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inset-0 animate-ping rounded-full bg-primary/50" />
-              <span className="relative h-1.5 w-1.5 rounded-full bg-primary" />
-            </span>
-            Motoclubes · Brasil
-          </motion.div>
+          Estrada
+        </h1>
+        <h1
+          className="hero-text w-full pl-[8vw] text-right text-[18vw] font-semibold uppercase leading-[0.75] tracking-tighter md:text-[16vw]"
+          data-speed="1.15"
+        >
+          Clube
+        </h1>
+      </div>
 
-          <motion.h1
-            initial={reduce ? false : { opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.06, ease }}
-            className="font-display text-[2.75rem] font-bold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-[4.5rem]"
-          >
-            A estrada
-            <br />
-            não espera.
-            <br />
-            <span className="neon-text soft-glow">O clube sim.</span>
-          </motion.h1>
+      {/* Center collage — hyperreal Harley */}
+      <div className="hero-image-block relative z-0 mx-auto aspect-[4/5] w-[90%] rotate-[-2deg] bg-black p-2 md:aspect-square md:w-[42%] md:p-6">
+        <div className="relative h-full w-full overflow-hidden">
+          <Image
+            src="/images/brutal/asset-8.jpeg"
+            alt="Harley Sportster em rua urbana — foto profissional"
+            fill
+            priority
+            sizes="(max-width: 768px) 90vw, 42vw"
+            className="object-cover grayscale-hard opacity-90"
+          />
+        </div>
 
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.14, ease }}
-            className="mt-6 max-w-md text-[15px] font-normal leading-[1.65] text-secondary md:text-base"
-          >
-            Rotas em grupo, navegação turn-by-turn, chat ao vivo e SOS.
-            O app do motoclube — nativo e feito pro asfalto.
-          </motion.p>
-
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.22, ease }}
-            className="mt-8"
-          >
-            <StoreButtons size="lg" />
-          </motion.div>
-        </motion.div>
-
-        {/* Floating phone — no photo plate / vignette */}
-        <div className="relative order-1 flex min-h-[380px] items-center justify-center sm:min-h-[440px] md:order-2 md:col-span-6 md:min-h-[520px]">
-          <div className="pointer-events-none absolute inset-0 opacity-25">
-            <HeroCanvas />
+        <div className="pointer-events-none absolute inset-0 z-10 grid grid-cols-2 grid-rows-3 p-6 text-[10px] uppercase tracking-widest text-white/60 md:p-8 md:text-xs">
+          <div className="w-1/2 border-t border-white/20 pt-2">Rotas em grupo</div>
+          <div className="w-1/2 justify-self-end border-t border-white/20 pt-2 text-right">
+            Turn-by-turn
           </div>
-
-          <motion.div
-            style={
-              reduce
-                ? undefined
-                : {
-                    y: phoneY,
-                    scale: phoneScale,
-                  }
-            }
-            initial={reduce ? false : { opacity: 0, y: 36 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.15, ease }}
-            className="relative z-10 will-change-transform"
-          >
-            <PhoneMockup />
-          </motion.div>
+          <div className="col-span-2 self-center border-y border-white/10 py-4 text-center text-sm opacity-40 md:text-base">
+            GPS ao vivo · chat · SOS
+          </div>
+          <div className="w-1/2 self-end border-b border-white/20 pb-2">
+            Eventos
+          </div>
+          <div className="w-1/2 justify-self-end self-end border-b border-white/20 pb-2 text-right">
+            Motoclube
+          </div>
         </div>
       </div>
 
-      <motion.div
-        style={
-          reduce ? undefined : { opacity: statsOpacity, y: statsY }
-        }
-        className="relative z-10 px-5 pb-8 md:px-8"
-      >
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          {STATS.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.4 + i * 0.07, ease }}
-              className="rounded-3xl glass-panel-strong px-5 py-6 md:px-7"
-            >
-              <p className="font-display text-lg font-semibold tracking-tight text-primary md:text-xl">
-                {stat.value}
-              </p>
-              <p className="mt-1.5 text-[12px] leading-snug text-muted">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
+      <div className="absolute bottom-8 left-0 z-20 flex w-full justify-between px-6 text-xs font-medium uppercase tracking-widest text-white mix-blend-difference md:px-12">
+        <div className="w-[48%] border-t border-white pt-2 md:w-1/3">
+          App nativo pra motoclube: mapa ao vivo, navegação e SOS na mesma
+          estrada.
         </div>
-      </motion.div>
+        <div className="w-[40%] border-t border-white pt-2 text-right md:w-1/3">
+          Índice 01 — O app
+        </div>
+      </div>
     </section>
   );
 }

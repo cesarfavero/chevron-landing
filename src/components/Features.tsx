@@ -1,122 +1,68 @@
 "use client";
 
 import { FEATURES } from "@/lib/constants";
-import { FeatureIcon } from "./FeatureIcons";
-import { GlassCard } from "./GlassCard";
-import { ScrollSection } from "./ScrollSection";
-import { StaggerContainer, StaggerItem } from "./SectionReveal";
+import { useGsap, gsap } from "@/hooks/useGsap";
 
 export function Features() {
-  return (
-    <ScrollSection id="features" className="py-28 md:py-36" intensity={0.85}>
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 h-px w-[min(80%,720px)] -translate-x-1/2 depth-line"
-        aria-hidden
-      />
+  useGsap(() => {
+    gsap.utils.toArray<HTMLElement>(".service-item").forEach((el, i) => {
+      gsap.fromTo(
+        el,
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          delay: i * 0.05,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 90%" },
+        },
+      );
+    });
+  }, []);
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
-        <div className="mb-14 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-xl">
-            <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
-              Recursos
-            </p>
-            <h2 className="font-display text-[2.25rem] font-bold tracking-[-0.035em] text-white md:text-4xl lg:text-[2.85rem]">
-              Tudo que o clube
-              <br />
-              <span className="text-white/45">precisa na estrada</span>
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm leading-relaxed text-secondary md:pb-1 md:text-[15px]">
-            Navegação, chat e segurança — do ponto de encontro ao destino.
-            Tudo conectado, em tempo real.
-          </p>
+  return (
+    <section
+      id="recursos"
+      className="relative min-h-[900px] overflow-hidden border-t border-white/10 bg-[#111] py-32 text-white"
+    >
+      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-[0.04]">
+        <h1 className="scale-y-[2.5] text-[22vw] font-semibold uppercase tracking-tighter text-white blur-sm">
+          Recursos
+        </h1>
+      </div>
+
+      <div className="relative z-10 flex h-full flex-col justify-between px-6 md:px-12">
+        <div className="mb-20 border-b border-white/20 pb-8 text-center">
+          <span className="mb-4 block text-xs uppercase tracking-widest opacity-50">
+            (002 — Capacidades)
+          </span>
+          <h2 className="text-5xl font-semibold uppercase tracking-tighter md:text-7xl">
+            O que o app faz
+          </h2>
         </div>
 
-        <StaggerContainer className="grid auto-rows-fr gap-3 md:gap-4 lg:grid-cols-12">
-          {FEATURES.map((feature) => (
-            <StaggerItem
-              key={feature.id}
-              className={`${feature.span} ${feature.featured ? "min-h-[280px] md:min-h-[340px]" : "min-h-[200px]"}`}
+        <div className="flex w-full flex-col">
+          {FEATURES.map((f) => (
+            <div
+              key={f.id}
+              className="service-item group -mx-4 cursor-default border-b border-white/20 px-4 py-8 transition-colors duration-500 hover:bg-white hover:text-black"
             >
-              <GlassCard
-                className="h-full"
-                glowColor={
-                  feature.id === "sos"
-                    ? "rgba(255, 92, 85, 0.16)"
-                    : feature.id === "chat"
-                      ? "rgba(77, 163, 255, 0.14)"
-                      : feature.id === "events"
-                        ? "rgba(255, 176, 32, 0.14)"
-                        : "rgba(0, 255, 136, 0.16)"
-                }
-              >
-                <div
-                  className={`flex h-full flex-col p-6 md:p-8 ${feature.featured ? "justify-between" : ""}`}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div
-                      className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-black/45 shadow-float-soft"
-                      style={{ color: feature.accent }}
-                    >
-                      <FeatureIcon name={feature.icon} className="h-5 w-5" />
-                    </div>
-                    {feature.featured && (
-                      <span className="rounded-full bg-primary/12 px-3 py-1 text-[11px] font-medium tracking-wide text-primary shadow-float-soft">
-                        Principal
-                      </span>
-                    )}
-                  </div>
-
-                  <div className={feature.featured ? "mt-auto pt-10" : "mt-6"}>
-                    <h3
-                      className={`font-display font-semibold tracking-tight text-white ${
-                        feature.featured
-                          ? "text-2xl md:text-3xl"
-                          : "text-lg md:text-xl"
-                      }`}
-                    >
-                      {feature.title}
-                    </h3>
-                    <p
-                      className={`mt-3 leading-relaxed text-secondary ${
-                        feature.featured
-                          ? "max-w-md text-[15px] md:text-base"
-                          : "text-sm"
-                      }`}
-                    >
-                      {feature.description}
-                    </p>
-
-                    {feature.featured && (
-                      <div className="mt-8 flex flex-wrap gap-2">
-                        {[
-                          "Código de convite",
-                          "Mapa ao vivo",
-                          "Grupo em tempo real",
-                        ].map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full bg-black/35 px-3 py-1 text-[11px] text-secondary shadow-float-soft"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  <div
-                    className="pointer-events-none absolute bottom-0 left-6 right-6 h-px opacity-40 md:left-8 md:right-8"
-                    style={{
-                      background: `linear-gradient(90deg, ${feature.accent}55, transparent)`,
-                    }}
-                  />
-                </div>
-              </GlassCard>
-            </StaggerItem>
+              <div className="flex flex-col justify-between md:flex-row md:items-end">
+                <span className="mb-2 text-xs uppercase tracking-widest opacity-50 md:mb-0 md:w-1/12">
+                  {f.id}
+                </span>
+                <h3 className="text-4xl font-semibold uppercase leading-none tracking-tighter transition-transform duration-500 group-hover:translate-x-3 md:w-6/12 md:text-6xl lg:text-7xl">
+                  {f.title}
+                </h3>
+                <p className="mt-4 text-sm uppercase tracking-tight opacity-70 transition-opacity group-hover:opacity-100 md:mt-0 md:w-4/12 md:text-base">
+                  {f.text}
+                </p>
+              </div>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
-    </ScrollSection>
+    </section>
   );
 }

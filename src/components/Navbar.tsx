@@ -1,118 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS } from "@/lib/constants";
-import { StoreButtons } from "./StoreButtons";
-import { BrandLogo } from "./BrandLogo";
+import { NAV } from "@/lib/constants";
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
-        scrolled
-          ? "bg-black/55 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-[4.25rem] md:px-8">
-        <a href="#top" className="transition-opacity hover:opacity-90">
-          <BrandLogo size={34} wordmarkClassName="text-[1.35rem] md:text-[1.5rem]" />
-        </a>
+    <nav className="pointer-events-none fixed left-0 top-0 z-50 flex w-full items-start justify-between p-4 text-xs font-medium uppercase tracking-widest text-white blend-diff md:p-8">
+      <a
+        href="#topo"
+        className="pointer-events-auto max-w-[10rem] leading-tight hover:italic"
+      >
+        Chevron.
+        <span className="mt-0.5 block text-[10px] font-normal normal-case tracking-normal opacity-60">
+          Motoclubes
+        </span>
+      </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-[13px] font-medium text-secondary transition hover:text-white"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div className="pointer-events-auto hidden flex-col text-center md:flex">
+        <span>Brasil</span>
+        <span className="opacity-50">GPS · Tempo real · Clube</span>
+      </div>
 
-        <div className="hidden md:block">
+      <div className="pointer-events-auto flex flex-col items-end gap-2 text-right md:flex-row md:items-center md:gap-8">
+        {NAV.map((item) => (
           <a
-            href="#download"
-            className="rounded-full bg-primary px-5 py-2 text-[13px] font-semibold text-black shadow-[0_8px_28px_rgba(0,255,136,0.28)] transition hover:bg-primary-light hover:shadow-[0_12px_36px_rgba(0,255,136,0.35)]"
+            key={item.href}
+            href={item.href}
+            className="underline-offset-4 hover:underline"
           >
-            Baixar app
+            {item.label}
           </a>
-        </div>
-
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/[0.05] shadow-float-soft backdrop-blur-md md:hidden"
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <div className="flex w-4 flex-col gap-1.5">
-            <span
-              className={`h-px w-full bg-white transition ${open ? "translate-y-[3.5px] rotate-45" : ""}`}
-            />
-            <span
-              className={`h-px w-full bg-white transition ${open ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`h-px w-full bg-white transition ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`}
-            />
-          </div>
-        </button>
-      </nav>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.28 }}
-            className="fixed inset-0 z-40 bg-black/90 px-6 pt-24 backdrop-blur-2xl md:hidden"
-          >
-            <ul className="flex flex-col gap-5">
-              {NAV_LINKS.map((link, i) => (
-                <motion.li
-                  key={link.href}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i }}
-                >
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="font-display text-3xl font-semibold text-white"
-                  >
-                    {link.label}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-            <div className="mt-10">
-              <StoreButtons />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+        ))}
+      </div>
+    </nav>
   );
 }

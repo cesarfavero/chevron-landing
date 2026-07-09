@@ -2,10 +2,7 @@ export const BRAND = {
   name: "Chevron",
   tagline: "O app dos motoclubes brasileiros",
   description:
-    "Rotas em grupo, navegação turn-by-turn, chat em tempo real e SOS de emergência. Feito para quem vive na estrada.",
-  primary: "#00FF88",
-  background: "#030303",
-  surface: "#0c0c0c",
+    "Rotas em grupo com GPS ao vivo, navegação turn-by-turn, chat do clube, eventos e SOS de emergência.",
 } as const;
 
 export const STORE_LINKS = {
@@ -14,97 +11,118 @@ export const STORE_LINKS = {
     "https://play.google.com/store/apps/details?id=com.chevron.mototrack",
 } as const;
 
-export const NAV_LINKS = [
-  { href: "#features", label: "Recursos" },
-  { href: "#experiencia", label: "Experiência" },
-  { href: "#como-funciona", label: "Como funciona" },
-  { href: "#download", label: "Baixar" },
+export const NAV = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#recursos", label: "Recursos" },
+  { href: "#estrada", label: "Estrada" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#baixar", label: "Baixar" },
+] as const;
+
+export const STATS = [
+  {
+    label: "Plataformas",
+    value: "iOS",
+    suffix: "+ Android",
+    text: "Apps nativos. Mesma experiência no bolso e no guidão.",
+  },
+  {
+    label: "Tempo real",
+    value: "Live",
+    suffix: "GPS",
+    text: "Localização, chat e SOS via socket — o clube inteiro sincronizado.",
+  },
+  {
+    label: "Segurança",
+    value: "SOS",
+    suffix: "GPS",
+    text: "Alerta com hold-to-send e posição em tempo real para o clube.",
+  },
 ] as const;
 
 export const FEATURES = [
   {
-    id: "rides",
+    id: "01",
     title: "Rotas em grupo",
-    description:
-      "Crie rotas solo ou com o clube, convide por código e acompanhe cada membro no mapa — do ponto de encontro ao destino.",
-    icon: "route",
-    accent: "#00FF88",
-    span: "lg:col-span-7 lg:row-span-2",
-    featured: true,
+    text: "Crie rota solo ou com o clube, convide por código e veja cada membro no mapa do encontro ao destino.",
   },
   {
-    id: "nav",
+    id: "02",
     title: "Navegação turn-by-turn",
-    description:
-      "Manobras com voz, preview de rota e câmera inteligente. Feita pro guidão.",
-    icon: "nav",
-    accent: "#5DFFB0",
-    span: "lg:col-span-5",
-    featured: false,
+    text: "Manobras com voz, preview de rota e câmera pensada pro guidão — legível de dia e de noite.",
   },
   {
-    id: "sos",
+    id: "03",
+    title: "Clube ao vivo",
+    text: "Dashboard, membros online e presença no mapa. Saiba quem está na estrada agora.",
+  },
+  {
+    id: "04",
+    title: "Chat do clube",
+    text: "Mensagens em tempo real pra combinar o rolê, o posto e o ponto de encontro.",
+  },
+  {
+    id: "05",
+    title: "Eventos",
+    text: "Encontros, viagens e RSVP. Organize o próximo rolezinho sem planilha.",
+  },
+  {
+    id: "06",
     title: "SOS de emergência",
-    description:
-      "Hold-to-send com localização em tempo real para todo o clube.",
-    icon: "sos",
-    accent: "#FF5C55",
-    span: "lg:col-span-5",
-    featured: false,
-  },
-  {
-    id: "club",
-    title: "Motoclube conectado",
-    description:
-      "Dashboard, membros online e presença ao vivo no mapa. Todo mundo junto.",
-    icon: "club",
-    accent: "#00CC66",
-    span: "lg:col-span-4",
-    featured: false,
-  },
-  {
-    id: "chat",
-    title: "Chat em tempo real",
-    description:
-      "Combine o rolê, avise o posto e mantenha o clube alinhado na hora.",
-    icon: "chat",
-    accent: "#4DA3FF",
-    span: "lg:col-span-4",
-    featured: false,
-  },
-  {
-    id: "events",
-    title: "Eventos e rolezinhos",
-    description:
-      "Encontros, viagens e RSVP. O próximo rolê vira tradição.",
-    icon: "events",
-    accent: "#FFB020",
-    span: "lg:col-span-4",
-    featured: false,
+    text: "Hold-to-send com localização ao vivo para todo o clube quando cada segundo conta.",
   },
 ] as const;
 
-export const STEPS = [
+export const WORKS = [
   {
-    step: "01",
-    title: "Crie sua conta",
-    description: "Cadastro rápido com e-mail. Configure perfil e moto.",
+    index: "01",
+    title: "Rota ao vivo",
+    meta: "Grupo · GPS · Mapa",
+    image: "/images/brutal/asset-7.jpeg",
+    alt: "Dois motociclistas em cruiser na ponte ao entardecer",
   },
   {
-    step: "02",
-    title: "Entre no clube",
-    description: "Crie um motoclube ou entre com o código de convite.",
+    index: "02",
+    title: "Sportster na cidade",
+    meta: "Estrada · Asfalto · Luz",
+    image: "/images/brutal/asset-8.jpeg",
+    alt: "Harley Sportster preta em rua urbana ao sol",
   },
   {
-    step: "03",
-    title: "Parta pro rolê",
-    description: "Inicie a rota, chame o grupo e navegue juntos.",
+    index: "03",
+    title: "Oficina do clube",
+    meta: "Garagem · Preparo · Iron",
+    image: "/images/brutal/asset-14.jpeg",
+    alt: "Harleys preparadas em oficina oficial",
+  },
+  {
+    index: "04",
+    title: "Detalhe de motor",
+    meta: "Revolution Max · Força",
+    image: "/images/brutal/hd-engine.jpg",
+    alt: "Close profissional do motor Revolution Max",
   },
 ] as const;
 
-export const STATS = [
-  { value: "iOS + Android", label: "Nativo nas duas plataformas" },
-  { value: "Tempo real", label: "Localização, chat e SOS" },
-  { value: "Turn-by-turn", label: "Navegação de verdade" },
-  { value: "SOS", label: "Emergência com GPS" },
+export const FAQ = [
+  {
+    q: "O Chevron é para quem?",
+    a: "Para motoclubes e grupos que rodam juntos no Brasil. Quem quer ver o clube no mapa, navegar e se comunicar sem improvisar com WhatsApp.",
+  },
+  {
+    q: "Funciona no iPhone e no Android?",
+    a: "Sim. Apps nativos nas duas plataformas, conectados ao mesmo backend — localização, chat e SOS em tempo real.",
+  },
+  {
+    q: "Como entro no clube dos irmãos?",
+    a: "Crie um motoclube ou entre com o código de convite. Nas rotas em grupo, o código da viagem também entra no mapa em segundos.",
+  },
+  {
+    q: "O SOS alerta quem?",
+    a: "Os membros do seu clube, com localização em tempo real. Hold-to-send pra evitar disparo acidental.",
+  },
+  {
+    q: "Precisa de plano pago?",
+    a: "Há plano gratuito com limites mensais de rotas e upgrade PRO pra quem roda mais. Detalhes dentro do app.",
+  },
 ] as const;

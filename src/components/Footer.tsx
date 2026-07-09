@@ -1,54 +1,28 @@
-import { NAV_LINKS } from "@/lib/constants";
-import { BrandLogo } from "./BrandLogo";
+import { NAV } from "@/lib/constants";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-black/50 shadow-[0_-24px_60px_rgba(0,0,0,0.45)]">
-      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-5 py-12 md:flex-row md:items-start md:justify-between md:px-8">
+    <footer className="border-t border-white/15 bg-black px-6 py-12 text-xs uppercase tracking-widest text-white/60 md:px-12">
+      <div className="flex flex-col justify-between gap-10 md:flex-row md:items-start">
         <div>
-          <BrandLogo size={32} wordmarkClassName="text-xl" />
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-secondary">
+          <div className="text-sm font-semibold text-white">Chevron.</div>
+          <p className="mt-2 max-w-xs normal-case tracking-normal text-white/40">
             O app dos motoclubes brasileiros.
           </p>
         </div>
-
-        <div className="flex flex-wrap gap-12">
-          <div>
-            <p className="text-[12px] font-medium tracking-wide text-muted">
-              Navegação
-            </p>
-            <ul className="mt-3 space-y-2">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-secondary transition hover:text-primary"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-[12px] font-medium tracking-wide text-muted">
-              Plataformas
-            </p>
-            <ul className="mt-3 space-y-2 text-sm text-secondary">
-              <li>iOS · App Store</li>
-              <li>Android · Google Play</li>
-            </ul>
-          </div>
+        <div className="flex flex-wrap gap-6">
+          {NAV.map((n) => (
+            <a key={n.href} href={n.href} className="hover:text-white">
+              {n.label}
+            </a>
+          ))}
         </div>
       </div>
-
-      <div className="bg-black/30 shadow-[inset_0_12px_24px_rgba(0,0,0,0.25)]">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-5 text-xs text-muted md:flex-row md:px-8">
-          <p>© {year} Chevron · Caesars Technology</p>
-          <p className="tracking-wide">Ride free. Ride together.</p>
-        </div>
+      <div className="mt-12 flex flex-col justify-between gap-3 border-t border-white/10 pt-6 md:flex-row">
+        <span>© {year} Chevron · Caesars Technology</span>
+        <span>Ride free. Ride together.</span>
       </div>
     </footer>
   );

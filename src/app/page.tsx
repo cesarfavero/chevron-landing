@@ -1,30 +1,28 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { About } from "@/components/About";
 import { Features } from "@/components/Features";
-import { Experience } from "@/components/Experience";
-import { HowItWorks } from "@/components/HowItWorks";
+import { Works } from "@/components/Works";
+import { Product } from "@/components/Product";
+import { Faq } from "@/components/Faq";
 import { Download } from "@/components/Download";
 import { Footer } from "@/components/Footer";
-import { ContinuousBackground } from "@/components/ContinuousBackground";
-import { ScrollProgress } from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
     <>
-      <ScrollProgress />
-      <ContinuousBackground />
-      <div className="site-vignette" aria-hidden />
+      <div className="noise-bg" aria-hidden />
       <Navbar />
-      <main className="relative z-10 flex-1">
+      <main>
         <Hero />
+        <About />
         <Features />
-        <Experience />
-        <HowItWorks />
+        <Works />
+        <Product />
+        <Faq />
         <Download />
       </main>
-      <div className="relative z-10">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }

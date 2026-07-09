@@ -1,43 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --chevron-primary: #00ff88;
-  --chevron-primary-dark: #00cc66;
-  --chevron-primary-light: #5dffb0;
-  --chevron-bg: #030303;
-  --chevron-surface: #0c0c0c;
-  --chevron-elevated: #121212;
-  --chevron-text: #f4f4f5;
-  --chevron-text-secondary: #9ca3af;
-  --chevron-text-muted: #5c5c5c;
-  --glass-highlight: rgba(255, 255, 255, 0.06);
-  --depth-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.35),
-    0 24px 64px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(255, 255, 255, 0.04);
-  --depth-shadow-strong:
-    0 8px 24px rgba(0, 0, 0, 0.4),
-    0 32px 80px rgba(0, 0, 0, 0.65),
-    0 0 40px rgba(0, 255, 136, 0.04),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
-  --depth-shadow-soft:
-    0 2px 8px rgba(0, 0, 0, 0.3),
-    0 12px 32px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.03);
+  --bg: #050505;
+  --fg: #f5f5f5;
+  --muted: rgba(245, 245, 245, 0.5);
+  --line: rgba(255, 255, 255, 0.2);
+  --accent: #00ff88;
+  --paper: #d4d4d4;
 }
 
 @theme inline {
-  --color-background: var(--chevron-bg);
-  --color-foreground: var(--chevron-text);
-  --color-primary: var(--chevron-primary);
-  --color-primary-dark: var(--chevron-primary-dark);
-  --color-primary-light: var(--chevron-primary-light);
-  --color-surface: var(--chevron-surface);
-  --color-elevated: var(--chevron-elevated);
-  --color-muted: var(--chevron-text-muted);
-  --color-secondary: var(--chevron-text-secondary);
-  --font-sans: var(--font-dm);
-  --font-display: var(--font-outfit);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-accent: var(--accent);
+  --color-paper: var(--paper);
+  --font-sans: var(--font-geist);
 }
 
 * {
@@ -49,260 +26,77 @@ html {
 }
 
 body {
-  background: var(--chevron-bg);
-  color: var(--chevron-text);
-  font-family: var(--font-dm), ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   overflow-x: hidden;
-  min-height: 100%;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-.font-display {
-  font-family: var(--font-outfit), var(--font-dm), system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-
-.brand-wordmark {
-  font-family: var(--font-outfit), system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.025em;
 }
 
 ::selection {
-  background: rgba(0, 255, 136, 0.28);
-  color: #fff;
-}
-
-.neon-text {
-  color: var(--chevron-primary);
-}
-
-.soft-glow {
-  text-shadow: 0 0 48px rgba(0, 255, 136, 0.22);
-}
-
-/* Multi-layer glass — no hard borders, depth via shadow */
-.glass-panel {
-  position: relative;
-  background:
-    linear-gradient(
-      155deg,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0.02) 42%,
-      rgba(255, 255, 255, 0.01) 100%
-    ),
-    rgba(10, 10, 10, 0.62);
-  border: none;
-  backdrop-filter: blur(22px) saturate(140%);
-  -webkit-backdrop-filter: blur(22px) saturate(140%);
-  box-shadow:
-    var(--depth-shadow),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 -20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.glass-panel::before {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    600px circle at var(--mx, 50%) var(--my, 0%),
-    rgba(255, 255, 255, 0.07),
-    transparent 42%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.glass-panel:hover::before {
-  opacity: 1;
-}
-
-.glass-panel-strong {
-  position: relative;
-  background:
-    linear-gradient(
-      160deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.03) 45%,
-      rgba(0, 0, 0, 0.3) 100%
-    ),
-    rgba(8, 8, 8, 0.78);
-  border: none;
-  backdrop-filter: blur(28px) saturate(150%);
-  -webkit-backdrop-filter: blur(28px) saturate(150%);
-  box-shadow:
-    var(--depth-shadow-strong),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    inset 0 -24px 48px rgba(0, 0, 0, 0.2);
-}
-
-.shadow-float {
-  box-shadow: var(--depth-shadow);
-}
-
-.shadow-float-strong {
-  box-shadow: var(--depth-shadow-strong);
-}
-
-.shadow-float-soft {
-  box-shadow: var(--depth-shadow-soft);
-}
-
-.store-btn {
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease;
-}
-
-.store-btn:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 12px 40px rgba(0, 255, 136, 0.12),
-    0 24px 64px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-}
-
-/* Ambient vignette */
-.site-vignette {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 30;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 45%,
-    rgba(0, 0, 0, 0.45) 100%
-  );
-}
-
-/* Scroll progress */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  z-index: 60;
-  transform-origin: 0% 50%;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 255, 136, 0.2),
-    var(--chevron-primary),
-    rgba(68, 255, 170, 0.8)
-  );
-  box-shadow: 0 0 12px rgba(0, 255, 136, 0.35);
+  background: #fff;
+  color: #000;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
+  width: 0;
   background: transparent;
 }
-::-webkit-scrollbar-thumb {
-  background: #222;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #00cc66;
+
+.noise-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-@keyframes float-soft {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
+.blend-diff {
+  mix-blend-mode: difference;
 }
 
-.float-soft {
-  animation: float-soft 7s ease-in-out infinite;
+.blend-excl {
+  mix-blend-mode: exclusion;
 }
 
-@keyframes ambient-drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(4%, -3%, 0) scale(1.05);
-  }
+.mask-wrap {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
 }
 
-.ambient-drift {
-  animation: ambient-drift 18s ease-in-out infinite;
+.tracking-mega {
+  letter-spacing: -0.06em;
 }
 
-.ambient-drift-slow {
-  animation: ambient-drift 26s ease-in-out infinite reverse;
+.grayscale-hard {
+  filter: grayscale(1) contrast(1.25);
 }
 
-/* Ken Burns for continuous still layers */
-@keyframes ken-burns {
-  0% {
-    transform: scale(1) translate3d(0, 0, 0);
-  }
-  50% {
-    transform: scale(1.08) translate3d(-1.5%, -1%, 0);
-  }
-  100% {
-    transform: scale(1.04) translate3d(1%, 0.5%, 0);
-  }
+.store-cta {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
-@keyframes ken-burns-reverse {
-  0% {
-    transform: scale(1.06) translate3d(1%, 0, 0);
-  }
-  50% {
-    transform: scale(1.12) translate3d(-1%, 1%, 0);
-  }
-  100% {
-    transform: scale(1.05) translate3d(0.5%, -0.5%, 0);
-  }
-}
-
-.ken-burns {
-  animation: ken-burns 28s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-.ken-burns-reverse {
-  animation: ken-burns-reverse 32s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-/* Depth divider */
-.depth-line {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.08) 20%,
-    rgba(0, 255, 136, 0.18) 50%,
-    rgba(255, 255, 255, 0.08) 80%,
-    transparent
-  );
+.store-cta:hover {
+  transform: translateY(-2px);
+  background: #fff;
+  color: #000;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .float-soft,
-  .ambient-drift,
-  .ambient-drift-slow,
-  .ken-burns,
-  .ken-burns-reverse {
-    animation: none !important;
   }
 }
