@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chevron — O app dos motoclubes brasileiros",
     description:
-      "Rotas em grupo, navegação turn-by-turn, chat e SOS. Feito para o pack.",
+      "Rotas em grupo, navegação turn-by-turn, chat e SOS. Feito para o motoclube.",
     type: "website",
     locale: "pt_BR",
     siteName: "Chevron",

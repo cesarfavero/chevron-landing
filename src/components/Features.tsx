@@ -21,14 +21,14 @@ export function Features() {
               Recursos
             </p>
             <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white md:text-5xl lg:text-[3.5rem]">
-              Tudo que o pack
+              Tudo que o clube
               <br />
               <span className="text-white/40">precisa na estrada</span>
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-secondary md:pb-1 md:text-[15px]">
-            Navegação, clube, chat e segurança — flutuando em glass sobre a
-            estrada. Tudo conectado, do ponto de encontro ao destino.
+            Navegação, chat e segurança — do ponto de encontro ao destino.
+            Tudo conectado, em tempo real.
           </p>
         </div>
 
@@ -55,14 +55,14 @@ export function Features() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div
-                      className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.08] bg-black/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+                      className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-black/45 shadow-float-soft"
                       style={{ color: feature.accent }}
                     >
                       <FeatureIcon name={feature.icon} className="h-5 w-5" />
                     </div>
                     {feature.featured && (
-                      <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-medium tracking-wide text-primary">
-                        Core
+                      <span className="rounded-full bg-primary/12 px-3 py-1 text-[11px] font-medium tracking-wide text-primary shadow-float-soft">
+                        Principal
                       </span>
                     )}
                   </div>
@@ -89,16 +89,18 @@ export function Features() {
 
                     {feature.featured && (
                       <div className="mt-8 flex flex-wrap gap-2">
-                        {["Código de convite", "Mapa ao vivo", "Pack sync"].map(
-                          (tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] text-secondary"
-                            >
-                              {tag}
-                            </span>
-                          ),
-                        )}
+                        {[
+                          "Código de convite",
+                          "Mapa ao vivo",
+                          "Grupo em tempo real",
+                        ].map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full bg-black/35 px-3 py-1 text-[11px] text-secondary shadow-float-soft"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     )}
                   </div>

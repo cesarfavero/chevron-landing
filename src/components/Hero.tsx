@@ -52,7 +52,7 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-black/30 px-3.5 py-1.5 text-[12px] font-medium tracking-wide text-primary backdrop-blur-md"
+            className="mb-5 inline-flex items-center gap-2 rounded-full bg-black/40 px-3.5 py-1.5 text-[12px] font-medium tracking-wide text-primary shadow-float-soft backdrop-blur-md"
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inset-0 animate-ping rounded-full bg-primary/50" />
@@ -71,7 +71,7 @@ export function Hero() {
             <br />
             não espera.
             <br />
-            <span className="neon-text soft-glow">O pack sim.</span>
+            <span className="neon-text soft-glow">O clube sim.</span>
           </motion.h1>
 
           <motion.p
@@ -81,7 +81,7 @@ export function Hero() {
             className="mt-6 max-w-md text-[15px] font-normal leading-[1.65] text-secondary md:text-[16px]"
           >
             Rotas em grupo, navegação turn-by-turn, chat ao vivo e SOS.
-            Nativo, limpo e feito pro asfalto.
+            O app do motoclube — nativo, limpo e feito pro asfalto.
           </motion.p>
 
           <motion.div
@@ -117,8 +117,8 @@ export function Hero() {
             className="relative z-10 w-[220px] sm:w-[250px] md:w-[290px] float-soft will-change-transform"
           >
             <div className="relative">
-              <div className="absolute -inset-6 rounded-[2.5rem] bg-primary/[0.07] blur-2xl" />
-              <div className="relative overflow-hidden rounded-[2rem] shadow-[0_40px_100px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.12)]">
+              <div className="absolute -inset-6 rounded-[2.75rem] bg-primary/[0.07] blur-2xl" />
+              <div className="relative overflow-hidden rounded-[2.25rem] shadow-[0_40px_100px_rgba(0,0,0,0.75),0_12px_40px_rgba(0,255,136,0.08),inset_0_1px_0_rgba(255,255,255,0.12)]">
                 <Image
                   src="/images/phone-mockup.jpg"
                   alt="Chevron no iPhone"
@@ -139,25 +139,23 @@ export function Hero() {
         }
         className="relative z-10 px-5 pb-8 md:px-8"
       >
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl glass-panel-strong">
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {STATS.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={reduce ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.4 + i * 0.07, ease }}
-                className="border-white/[0.05] px-5 py-6 md:border-r md:px-7 md:last:border-r-0 [&:nth-child(odd)]:border-r [&:nth-child(-n+2)]:border-b md:[&:nth-child(-n+2)]:border-b-0"
-              >
-                <p className="font-display text-lg font-semibold tracking-tight text-primary md:text-xl">
-                  {stat.value}
-                </p>
-                <p className="mt-1.5 text-[12px] leading-snug text-muted">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+          {STATS.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={reduce ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.4 + i * 0.07, ease }}
+              className="rounded-3xl glass-panel-strong px-5 py-6 md:px-7"
+            >
+              <p className="font-display text-lg font-semibold tracking-tight text-primary md:text-xl">
+                {stat.value}
+              </p>
+              <p className="mt-1.5 text-[12px] leading-snug text-muted">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </section>

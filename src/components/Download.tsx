@@ -32,9 +32,9 @@ export function Download() {
 
         <motion.div
           style={reduce ? undefined : { y: cardY }}
-          className="glass-panel-strong relative rounded-[2rem] px-6 py-12 text-center md:px-12 md:py-16"
+          className="glass-panel-strong relative rounded-[2.25rem] px-6 py-12 text-center md:px-12 md:py-16"
         >
-          <div className="mx-auto mb-7 flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-[22%] shadow-[0_0_40px_rgba(0,255,136,0.22)] ring-1 ring-white/10">
+          <div className="mx-auto mb-7 flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-[22%] shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_40px_rgba(0,255,136,0.22)]">
             <Image
               src="/images/app-icon.png"
               alt="Ícone Chevron"
@@ -51,7 +51,7 @@ export function Download() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-secondary">
-            iOS e Android. Rotas, navegação, chat e SOS — o pack no bolso.
+            iOS e Android. Rotas, navegação, chat e SOS — o motoclube no bolso.
           </p>
 
           <div className="mt-9 flex justify-center">

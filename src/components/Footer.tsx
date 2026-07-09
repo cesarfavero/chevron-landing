@@ -5,7 +5,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-white/[0.05] bg-black/40">
+    <footer className="relative bg-black/50 shadow-[0_-24px_60px_rgba(0,0,0,0.45)]">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-5 py-12 md:flex-row md:items-start md:justify-between md:px-8">
         <div>
           <BrandLogo size={32} wordmarkClassName="text-xl" />
@@ -44,7 +44,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/[0.05]">
+      <div className="bg-black/30 shadow-[inset_0_12px_24px_rgba(0,0,0,0.25)]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-5 text-xs text-muted md:flex-row md:px-8">
           <p>© {year} Chevron · Caesars Technology</p>
           <p className="tracking-wide">Ride free. Ride together.</p>

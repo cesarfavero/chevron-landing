@@ -53,7 +53,7 @@ export function HowItWorks() {
                   <div className="flex h-full flex-col items-center px-6 py-9 md:px-8">
                     <div className="relative mb-6 flex h-14 w-14 items-center justify-center">
                       <div className="absolute inset-0 rounded-full bg-primary/10 blur-md" />
-                      <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-primary/25 bg-black/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                      <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-black/45 shadow-float-soft">
                         <span className="font-display text-lg font-semibold tabular-nums text-primary">
                           {step.step}
                         </span>

@@ -45,18 +45,19 @@ export function GlassCard({
   return (
     <motion.div
       onMouseMove={onMove}
-      className={`group relative overflow-hidden rounded-[1.35rem] ${className}`}
+      className={`group relative overflow-hidden rounded-[1.75rem] ${className}`}
       whileHover={
         reduce || !interactive
           ? undefined
-          : { y: -4, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }
+          : {
+              y: -5,
+              transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+            }
       }
       {...rest}
     >
-      {/* Base glass body */}
       <div className="absolute inset-0 rounded-[inherit] glass-panel" />
 
-      {/* Cursor spotlight */}
       {interactive && !reduce && (
         <motion.div
           className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-400 group-hover:opacity-100"
@@ -64,15 +65,13 @@ export function GlassCard({
         />
       )}
 
-      {/* Soft edge rim light */}
       <div
-        className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60"
+        className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-50"
         style={{
-          background: `linear-gradient(135deg, ${glowColor.replace("0.18", "0.12")} 0%, transparent 35%, transparent 65%, rgba(255,255,255,0.03) 100%)`,
+          background: `linear-gradient(145deg, ${glowColor.replace("0.18", "0.1")} 0%, transparent 40%, transparent 100%)`,
         }}
       />
 
-      {/* Content */}
       <div className="relative z-10 h-full">{children}</div>
     </motion.div>
   );

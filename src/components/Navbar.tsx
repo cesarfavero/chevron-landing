@@ -28,7 +28,7 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "border-b border-white/[0.06] bg-black/55 backdrop-blur-2xl"
+          ? "bg-black/55 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
           : "bg-transparent"
       }`}
     >
@@ -53,7 +53,7 @@ export function Navbar() {
         <div className="hidden md:block">
           <a
             href="#download"
-            className="rounded-full bg-primary px-5 py-2 text-[13px] font-semibold text-black shadow-[0_0_24px_rgba(0,255,136,0.2)] transition hover:bg-primary-light hover:shadow-[0_0_32px_rgba(0,255,136,0.3)]"
+            className="rounded-full bg-primary px-5 py-2 text-[13px] font-semibold text-black shadow-[0_8px_28px_rgba(0,255,136,0.28)] transition hover:bg-primary-light hover:shadow-[0_12px_36px_rgba(0,255,136,0.35)]"
           >
             Baixar app
           </a>
@@ -61,7 +61,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-md md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/[0.05] shadow-float-soft backdrop-blur-md md:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}

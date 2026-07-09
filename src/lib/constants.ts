@@ -26,7 +26,7 @@ export const FEATURES = [
     id: "rides",
     title: "Rotas em grupo",
     description:
-      "Crie rotas solo ou em pack com código de convite. Acompanhe cada membro no mapa, do ponto de encontro até o destino.",
+      "Crie rotas solo ou com o clube, convide por código e acompanhe cada membro no mapa — do ponto de encontro ao destino.",
     icon: "route",
     accent: "#00FF88",
     span: "lg:col-span-7 lg:row-span-2",
@@ -46,7 +46,7 @@ export const FEATURES = [
     id: "sos",
     title: "SOS de emergência",
     description:
-      "Hold-to-send com localização em tempo real pro clube inteiro.",
+      "Hold-to-send com localização em tempo real para todo o clube.",
     icon: "sos",
     accent: "#FF5C55",
     span: "lg:col-span-5",
@@ -56,7 +56,7 @@ export const FEATURES = [
     id: "club",
     title: "Motoclube conectado",
     description:
-      "Dashboard, membros online e presença ao vivo no mapa. Pack unido.",
+      "Dashboard, membros online e presença ao vivo no mapa. Todo mundo junto.",
     icon: "club",
     accent: "#00CC66",
     span: "lg:col-span-4",
@@ -66,7 +66,7 @@ export const FEATURES = [
     id: "chat",
     title: "Chat em tempo real",
     description:
-      "Combine o rolê, avise o posto, mantenha o pack alinhado na hora.",
+      "Combine o rolê, avise o posto e mantenha o clube alinhado na hora.",
     icon: "chat",
     accent: "#4DA3FF",
     span: "lg:col-span-4",
@@ -74,7 +74,7 @@ export const FEATURES = [
   },
   {
     id: "events",
-    title: "Eventos & rolezinhos",
+    title: "Eventos e rolezinhos",
     description:
       "Encontros, viagens e RSVP. O próximo rolê vira tradição.",
     icon: "events",
@@ -93,12 +93,12 @@ export const STEPS = [
   {
     step: "02",
     title: "Entre no clube",
-    description: "Crie um motoclube ou entre com o código dos irmãos.",
+    description: "Crie um motoclube ou entre com o código de convite.",
   },
   {
     step: "03",
     title: "Parta pro rolê",
-    description: "Inicie a rota, convide o pack e navegue juntos.",
+    description: "Inicie a rota, chame o grupo e navegue juntos.",
   },
 ] as const;
 

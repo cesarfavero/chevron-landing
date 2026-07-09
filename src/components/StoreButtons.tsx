@@ -41,7 +41,7 @@ export function StoreButtons({
         href={STORE_LINKS.appStore}
         target="_blank"
         rel="noopener noreferrer"
-        className={`store-btn glass-panel-strong inline-flex items-center gap-3 rounded-2xl ${pad}`}
+        className={`store-btn glass-panel-strong inline-flex items-center gap-3 rounded-3xl ${pad}`}
         aria-label="Baixar na App Store"
       >
         <AppleIcon className={size === "lg" ? "h-8 w-8" : "h-7 w-7"} />
@@ -59,7 +59,7 @@ export function StoreButtons({
         href={STORE_LINKS.playStore}
         target="_blank"
         rel="noopener noreferrer"
-        className={`store-btn glass-panel-strong inline-flex items-center gap-3 rounded-2xl ${pad}`}
+        className={`store-btn glass-panel-strong inline-flex items-center gap-3 rounded-3xl ${pad}`}
         aria-label="Disponível no Google Play"
       >
         <PlayIcon className={size === "lg" ? "h-8 w-8" : "h-7 w-7"} />

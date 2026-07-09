@@ -14,7 +14,7 @@ import { ScrollSection } from "./ScrollSection";
 const highlights = [
   {
     title: "Mapa ao vivo do clube",
-    text: "Veja quem está online e onde o pack se move.",
+    text: "Veja quem está online e onde cada um está na estrada.",
   },
   {
     title: "Código de convite",
@@ -52,15 +52,15 @@ export function Experience() {
             <span className="neon-text soft-glow">o asfalto.</span>
           </h2>
           <p className="mt-5 max-w-md text-[15px] leading-relaxed text-secondary">
-            Cruisers, chrome e fraternidade do pack — com a precisão de um app
-            de navegação de verdade.
+            A energia do motoclube com a precisão de um app de navegação de
+            verdade.
           </p>
 
           <ul className="mt-10 space-y-3">
             {highlights.map((item, i) => (
               <li key={item.title}>
                 <GlassCard
-                  className="!rounded-2xl"
+                  className="!rounded-3xl"
                   glowColor="rgba(0, 255, 136, 0.1)"
                 >
                   <div className="flex items-center gap-4 px-5 py-4">
@@ -88,9 +88,9 @@ export function Experience() {
         >
           <motion.div
             style={reduce ? undefined : { y: mainY, scale, rotate }}
-            className="absolute inset-x-0 top-0 overflow-hidden rounded-3xl will-change-transform"
+            className="absolute inset-x-0 top-0 overflow-hidden rounded-[1.75rem] will-change-transform"
           >
-            <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-white/[0.1] shadow-[0_40px_100px_rgba(0,0,0,0.65)]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] shadow-float-strong">
               <Image
                 src="/images/hero-moto.jpg"
                 alt="Cruiser na estrada à noite"
@@ -99,13 +99,12 @@ export function Experience() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-white/[0.04]" />
-              <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
             </div>
           </motion.div>
 
           <motion.div
             style={reduce ? undefined : { y: floatY }}
-            className="absolute bottom-4 right-0 w-[48%] overflow-hidden rounded-2xl border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.7)] will-change-transform sm:right-2"
+            className="absolute bottom-4 right-0 w-[48%] overflow-hidden rounded-3xl shadow-float-strong will-change-transform sm:right-2"
           >
             <div className="relative aspect-[16/10]">
               <Image
@@ -124,13 +123,13 @@ export function Experience() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="absolute bottom-16 left-0 glass-panel-strong rounded-2xl px-4 py-3 shadow-xl"
+            className="absolute bottom-16 left-0 rounded-3xl glass-panel-strong px-4 py-3"
           >
             <p className="text-[11px] font-medium tracking-wide text-primary">
               Ao vivo
             </p>
             <p className="font-display text-base font-semibold tracking-tight text-white">
-              Pack online
+              Clube online
             </p>
           </motion.div>
         </div>
