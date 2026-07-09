@@ -27,13 +27,13 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
-  const phoneY = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const phoneScale = useTransform(scrollYProgress, [0, 1], [1, 0.88]);
-  const phoneRotate = useTransform(scrollYProgress, [0, 1], [0, -4]);
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const statsOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const phoneY = useTransform(scrollYProgress, [0, 1], [0, 160]);
+  const phoneScale = useTransform(scrollYProgress, [0, 1], [1, 0.86]);
+  const phoneRotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
+  const statsOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
+  const statsY = useTransform(scrollYProgress, [0, 0.5], [0, 40]);
 
   return (
     <section
@@ -41,32 +41,10 @@ export function Hero() {
       ref={ref}
       className="relative min-h-[100svh] overflow-hidden pt-20"
     >
-      {/* Parallax video depth */}
-      <motion.div
-        style={reduce ? undefined : { y: bgY }}
-        className="absolute inset-0 will-change-transform"
-      >
-        <video
-          className="h-[115%] w-full object-cover opacity-[0.22]"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/images/hero-moto.jpg"
-        >
-          <source src="/videos/hero-ride.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-[#030303]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_35%,rgba(0,255,136,0.09),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(0,0,0,0.6),transparent_50%)]" />
-      </motion.div>
-
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-4 px-5 pb-10 pt-6 md:grid-cols-12 md:gap-6 md:px-8 md:pb-16 md:pt-10">
         <motion.div
           style={
-            reduce
-              ? undefined
-              : { y: contentY, opacity: contentOpacity }
+            reduce ? undefined : { y: contentY, opacity: contentOpacity }
           }
           className="order-2 md:order-1 md:col-span-6"
         >
@@ -74,7 +52,7 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 text-[12px] font-medium tracking-wide text-primary backdrop-blur-md"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-black/30 px-3.5 py-1.5 text-[12px] font-medium tracking-wide text-primary backdrop-blur-md"
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inset-0 animate-ping rounded-full bg-primary/50" />
@@ -116,13 +94,11 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Phone + 3D depth stack */}
         <div className="relative order-1 flex h-[360px] items-center justify-center sm:h-[440px] md:order-2 md:col-span-6 md:h-[560px]">
           <div className="pointer-events-none absolute inset-0 opacity-40">
             <HeroCanvas />
           </div>
 
-          {/* Soft ground glow */}
           <div className="pointer-events-none absolute bottom-[12%] left-1/2 h-24 w-48 -translate-x-1/2 rounded-[100%] bg-primary/15 blur-3xl" />
 
           <motion.div
@@ -157,9 +133,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Glass stats strip */}
       <motion.div
-        style={reduce ? undefined : { opacity: statsOpacity }}
+        style={
+          reduce ? undefined : { opacity: statsOpacity, y: statsY }
+        }
         className="relative z-10 px-5 pb-8 md:px-8"
       >
         <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl glass-panel-strong">

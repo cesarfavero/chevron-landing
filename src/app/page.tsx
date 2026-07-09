@@ -5,14 +5,14 @@ import { Experience } from "@/components/Experience";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Download } from "@/components/Download";
 import { Footer } from "@/components/Footer";
-import { AmbientLights } from "@/components/AmbientLights";
+import { ContinuousBackground } from "@/components/ContinuousBackground";
 import { ScrollProgress } from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
-      <AmbientLights />
+      <ContinuousBackground />
       <div className="site-vignette" aria-hidden />
       <Navbar />
       <main className="relative z-10 flex-1">
@@ -22,7 +22,9 @@ export default function Home() {
         <HowItWorks />
         <Download />
       </main>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </>
   );
 }

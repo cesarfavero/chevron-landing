@@ -8,8 +8,8 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useRef } from "react";
-import { SectionReveal } from "./SectionReveal";
 import { GlassCard } from "./GlassCard";
+import { ScrollSection } from "./ScrollSection";
 
 const highlights = [
   {
@@ -27,42 +27,22 @@ const highlights = [
 ];
 
 export function Experience() {
-  const ref = useRef<HTMLElement>(null);
+  const mediaRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: mediaRef,
     offset: ["start end", "end start"],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const mainY = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const floatY = useTransform(scrollYProgress, [0, 1], [90, -40]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [2, -2]);
-  const scale = useTransform(scrollYProgress, [0, 0.4, 1], [0.94, 1, 0.98]);
+  const mainY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const floatY = useTransform(scrollYProgress, [0, 1], [80, -30]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [2.5, -2.5]);
+  const scale = useTransform(scrollYProgress, [0, 0.45, 1], [0.93, 1, 0.97]);
 
   return (
-    <section
-      id="experiencia"
-      ref={ref}
-      className="relative overflow-hidden py-28 md:py-36"
-    >
-      <motion.div
-        style={reduce ? undefined : { y: bgY }}
-        className="absolute inset-0 will-change-transform"
-      >
-        <Image
-          src="/images/pack-ride.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="scale-110 object-cover opacity-[0.18]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#030303] via-[#030303]/90 to-[#030303]/70" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,rgba(0,255,136,0.06),transparent_55%)]" />
-      </motion.div>
-
+    <ScrollSection id="experiencia" className="py-28 md:py-36" intensity={1}>
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-2 md:gap-20 md:px-8">
-        <SectionReveal>
+        <div>
           <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
             Experiência
           </p>
@@ -72,8 +52,8 @@ export function Experience() {
             <span className="neon-text soft-glow">o asfalto.</span>
           </h2>
           <p className="mt-5 max-w-md text-[15px] leading-relaxed text-secondary">
-            Profundidade visual, glass sutil e precisão de navegação — a energia
-            do pack com a clareza de um app nativo.
+            Cruisers, chrome e fraternidade do pack — com a precisão de um app
+            de navegação de verdade.
           </p>
 
           <ul className="mt-10 space-y-3">
@@ -100,27 +80,26 @@ export function Experience() {
               </li>
             ))}
           </ul>
-        </SectionReveal>
+        </div>
 
-        <div className="relative mx-auto h-[420px] w-full max-w-lg md:h-[500px]">
+        <div
+          ref={mediaRef}
+          className="relative mx-auto h-[420px] w-full max-w-lg md:h-[500px]"
+        >
           <motion.div
-            style={
-              reduce
-                ? undefined
-                : { y: mainY, scale, rotate }
-            }
+            style={reduce ? undefined : { y: mainY, scale, rotate }}
             className="absolute inset-x-0 top-0 overflow-hidden rounded-3xl will-change-transform"
           >
             <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-white/[0.1] shadow-[0_40px_100px_rgba(0,0,0,0.65)]">
               <Image
                 src="/images/hero-moto.jpg"
-                alt="Moto moderna minimal"
+                alt="Cruiser na estrada à noite"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-white/[0.04]" />
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" />
+              <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
             </div>
           </motion.div>
 
@@ -131,7 +110,7 @@ export function Experience() {
             <div className="relative aspect-[16/10]">
               <Image
                 src="/images/handlebar.jpg"
-                alt="Cockpit digital"
+                alt="Guidão e chrome de cruiser"
                 fill
                 sizes="240px"
                 className="object-cover"
@@ -156,6 +135,6 @@ export function Experience() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </ScrollSection>
   );
 }

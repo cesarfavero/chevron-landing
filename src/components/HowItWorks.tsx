@@ -2,12 +2,13 @@
 
 import { STEPS } from "@/lib/constants";
 import { GlassCard } from "./GlassCard";
-import { SectionReveal, StaggerContainer, StaggerItem } from "./SectionReveal";
+import { ScrollSection } from "./ScrollSection";
+import { StaggerContainer, StaggerItem } from "./SectionReveal";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 
 export function HowItWorks() {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -16,18 +17,9 @@ export function HowItWorks() {
   const lineScale = useTransform(scrollYProgress, [0.15, 0.55], [0, 1]);
 
   return (
-    <section
-      id="como-funciona"
-      ref={ref}
-      className="relative py-28 md:py-36"
-    >
-      <div
-        className="pointer-events-none absolute right-0 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-primary/[0.035] blur-[110px]"
-        aria-hidden
-      />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
-        <SectionReveal className="mb-16 text-center">
+    <ScrollSection id="como-funciona" className="py-28 md:py-36" intensity={0.9}>
+      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8" ref={ref}>
+        <div className="mb-16 text-center">
           <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
             Como funciona
           </p>
@@ -36,10 +28,9 @@ export function HowItWorks() {
             <br />
             <span className="text-white/35">Zero fricção.</span>
           </h2>
-        </SectionReveal>
+        </div>
 
         <div className="relative">
-          {/* Animated connecting line (desktop) */}
           <div className="pointer-events-none absolute left-[16%] right-[16%] top-[2.75rem] hidden h-px overflow-hidden md:block">
             <div className="h-full w-full bg-white/[0.06]" />
             <motion.div
@@ -81,6 +72,6 @@ export function HowItWorks() {
           </StaggerContainer>
         </div>
       </div>
-    </section>
+    </ScrollSection>
   );
 }

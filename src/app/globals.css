@@ -225,6 +225,41 @@ body {
   animation: ambient-drift 26s ease-in-out infinite reverse;
 }
 
+/* Ken Burns for continuous still layers */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(-1.5%, -1%, 0);
+  }
+  100% {
+    transform: scale(1.04) translate3d(1%, 0.5%, 0);
+  }
+}
+
+@keyframes ken-burns-reverse {
+  0% {
+    transform: scale(1.06) translate3d(1%, 0, 0);
+  }
+  50% {
+    transform: scale(1.12) translate3d(-1%, 1%, 0);
+  }
+  100% {
+    transform: scale(1.05) translate3d(0.5%, -0.5%, 0);
+  }
+}
+
+.ken-burns {
+  animation: ken-burns 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.ken-burns-reverse {
+  animation: ken-burns-reverse 32s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
 /* Depth divider */
 .depth-line {
   height: 1px;
@@ -244,7 +279,9 @@ body {
   }
   .float-soft,
   .ambient-drift,
-  .ambient-drift-slow {
+  .ambient-drift-slow,
+  .ken-burns,
+  .ken-burns-reverse {
     animation: none !important;
   }
 }

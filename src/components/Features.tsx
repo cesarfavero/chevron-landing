@@ -3,40 +3,34 @@
 import { FEATURES } from "@/lib/constants";
 import { FeatureIcon } from "./FeatureIcons";
 import { GlassCard } from "./GlassCard";
-import { SectionReveal, StaggerContainer, StaggerItem } from "./SectionReveal";
+import { ScrollSection } from "./ScrollSection";
+import { StaggerContainer, StaggerItem } from "./SectionReveal";
 
 export function Features() {
   return (
-    <section id="features" className="relative py-28 md:py-36">
-      {/* Local depth lights */}
+    <ScrollSection id="features" className="py-28 md:py-36" intensity={0.85}>
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-px w-[min(80%,720px)] -translate-x-1/2 depth-line"
         aria-hidden
       />
-      <div
-        className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-primary/[0.04] blur-[100px]"
-        aria-hidden
-      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
-        <SectionReveal>
-          <div className="mb-14 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-xl">
-              <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
-                Recursos
-              </p>
-              <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white md:text-5xl lg:text-[3.5rem]">
-                Tudo que o pack
-                <br />
-                <span className="text-white/40">precisa na estrada</span>
-              </h2>
-            </div>
-            <p className="max-w-sm text-sm leading-relaxed text-secondary md:pb-1 md:text-[15px]">
-              Navegação, clube, chat e segurança — empilhados em camadas de
-              vidro, com a profundidade de um app nativo premium.
+        <div className="mb-14 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-xl">
+            <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
+              Recursos
             </p>
+            <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white md:text-5xl lg:text-[3.5rem]">
+              Tudo que o pack
+              <br />
+              <span className="text-white/40">precisa na estrada</span>
+            </h2>
           </div>
-        </SectionReveal>
+          <p className="max-w-sm text-sm leading-relaxed text-secondary md:pb-1 md:text-[15px]">
+            Navegação, clube, chat e segurança — flutuando em glass sobre a
+            estrada. Tudo conectado, do ponto de encontro ao destino.
+          </p>
+        </div>
 
         <StaggerContainer className="grid auto-rows-fr gap-3 md:gap-4 lg:grid-cols-12">
           {FEATURES.map((feature) => (
@@ -61,7 +55,7 @@ export function Features() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div
-                      className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.08] bg-black/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+                      className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.08] bg-black/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
                       style={{ color: feature.accent }}
                     >
                       <FeatureIcon name={feature.icon} className="h-5 w-5" />
@@ -109,7 +103,6 @@ export function Features() {
                     )}
                   </div>
 
-                  {/* Bottom accent line */}
                   <div
                     className="pointer-events-none absolute bottom-0 left-6 right-6 h-px opacity-40 md:left-8 md:right-8"
                     style={{
@@ -122,6 +115,6 @@ export function Features() {
           ))}
         </StaggerContainer>
       </div>
-    </section>
+    </ScrollSection>
   );
 }
