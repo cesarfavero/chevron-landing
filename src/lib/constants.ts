@@ -1,10 +1,3 @@
-export const BRAND = {
-  name: "Chevron",
-  tagline: "O app dos motoclubes brasileiros",
-  description:
-    "Rotas em grupo com GPS ao vivo, navegação turn-by-turn, chat do clube, eventos e SOS de emergência.",
-} as const;
-
 export const STORE_LINKS = {
   appStore: "https://apps.apple.com/app/chevron",
   playStore:
@@ -12,117 +5,145 @@ export const STORE_LINKS = {
 } as const;
 
 export const NAV = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#recursos", label: "Recursos" },
-  { href: "#estrada", label: "Estrada" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#baixar", label: "Baixar" },
+  { href: "#about", label: "Sobre" },
+  { href: "#vectors-section", label: "Recursos" },
+  { href: "#works", label: "Estrada" },
+  { href: "#faq-section", label: "FAQ" },
+  { href: "#contact", label: "Baixar" },
 ] as const;
 
 export const STATS = [
   {
     label: "Plataformas",
-    value: "iOS",
-    suffix: "+ Android",
+    target: 2,
+    suffix: " native",
+    display: "iOS + Android",
     text: "Apps nativos. Mesma experiência no bolso e no guidão.",
   },
   {
     label: "Tempo real",
-    value: "Live",
-    suffix: "GPS",
-    text: "Localização, chat e SOS via socket — o clube inteiro sincronizado.",
+    target: 100,
+    suffix: "% live",
+    display: null as string | null,
+    text: "Localização, chat e SOS via socket — o clube sincronizado.",
   },
   {
     label: "Segurança",
-    value: "SOS",
-    suffix: "GPS",
-    text: "Alerta com hold-to-send e posição em tempo real para o clube.",
+    target: 1,
+    suffix: " SOS",
+    display: "Hold",
+    text: "Alerta com hold-to-send e GPS em tempo real pro clube.",
   },
 ] as const;
 
-export const FEATURES = [
+export const SERVICES = [
   {
     id: "01",
     title: "Rotas em grupo",
-    text: "Crie rota solo ou com o clube, convide por código e veja cada membro no mapa do encontro ao destino.",
+    text: "Crie rota solo ou com o clube, convide por código e veja cada membro no mapa.",
   },
   {
     id: "02",
-    title: "Navegação turn-by-turn",
-    text: "Manobras com voz, preview de rota e câmera pensada pro guidão — legível de dia e de noite.",
+    title: "Navegação\nturn-by-turn",
+    text: "Manobras com voz, preview de rota e câmera pensada pro guidão.",
   },
   {
     id: "03",
     title: "Clube ao vivo",
-    text: "Dashboard, membros online e presença no mapa. Saiba quem está na estrada agora.",
+    text: "Dashboard, membros online e presença no mapa em tempo real.",
   },
   {
     id: "04",
     title: "Chat do clube",
-    text: "Mensagens em tempo real pra combinar o rolê, o posto e o ponto de encontro.",
+    text: "Mensagens ao vivo pra combinar o rolê, o posto e o encontro.",
   },
   {
     id: "05",
     title: "Eventos",
-    text: "Encontros, viagens e RSVP. Organize o próximo rolezinho sem planilha.",
+    text: "Encontros, viagens e RSVP sem planilha e sem grupo infinito.",
   },
   {
     id: "06",
-    title: "SOS de emergência",
-    text: "Hold-to-send com localização ao vivo para todo o clube quando cada segundo conta.",
+    title: "SOS",
+    text: "Hold-to-send com localização ao vivo quando cada segundo conta.",
   },
 ] as const;
 
 export const WORKS = [
   {
-    index: "01",
-    title: "Rota ao vivo",
-    meta: "Grupo · GPS · Mapa",
+    case: "01",
+    tag: "Grupo · GPS",
+    title: ["ROTA", "AO VIVO"],
+    caption: "O clube inteiro no mapa — do ponto de encontro ao destino.",
     image: "/images/brutal/asset-7.jpeg",
-    alt: "Dois motociclistas em cruiser na ponte ao entardecer",
+    aspect: "aspect-[3/4]",
+    pos: "md:top-0 md:left-[5%] md:w-[45%]",
+    titleClass:
+      "absolute top-1/2 -translate-y-1/2 left-4 md:-left-6 lg:-left-10 text-5xl md:text-7xl font-semibold tracking-tighter uppercase mix-blend-difference leading-none z-10 whitespace-nowrap group-hover:italic transition-all proj-title",
+    captionClass: "mt-6 text-base tracking-tight uppercase opacity-80 w-3/4 ml-auto text-right proj-caption",
   },
   {
-    index: "02",
-    title: "Sportster na cidade",
-    meta: "Estrada · Asfalto · Luz",
+    case: "02",
+    tag: "Mapa · Clube",
+    title: ["MAPA", "CLUBE"],
+    caption: "Quem está online, onde está — presença em tempo real.",
+    image: "/images/brutal/hd-beauty.jpg",
+    aspect: "aspect-square",
+    pos: "md:top-[24%] md:right-[5%] md:w-[38%] mt-24 md:mt-0",
+    titleClass:
+      "absolute bottom-8 right-4 md:-right-4 lg:-right-8 text-5xl md:text-6xl font-semibold tracking-tighter uppercase mix-blend-difference leading-none text-right z-10 whitespace-nowrap group-hover:tracking-widest transition-all proj-title",
+    captionClass: "mt-6 text-base tracking-tight uppercase opacity-80 w-3/4 proj-caption",
+  },
+  {
+    case: "03",
+    tag: "Nav · Guidão",
+    title: ["NAV", "GUIDÃO"],
+    caption: "Turn-by-turn legível de dia e de noite — feito pro asfalto.",
     image: "/images/brutal/asset-8.jpeg",
-    alt: "Harley Sportster preta em rua urbana ao sol",
+    aspect: "aspect-[16/9]",
+    pos: "md:top-[68%] md:left-[20%] md:w-[55%] mt-24 md:mt-0",
+    titleClass:
+      "absolute top-4 md:-top-4 left-4 md:left-[18%] lg:left-[22%] text-5xl md:text-8xl lg:text-9xl font-semibold tracking-tighter uppercase mix-blend-difference leading-none z-10 whitespace-nowrap group-hover:-translate-y-4 transition-transform proj-title",
+    captionClass: "mt-6 text-base tracking-tight uppercase opacity-80 w-1/2 ml-auto proj-caption",
+  },
+] as const;
+
+export const VOICES = [
+  {
+    quote:
+      "Antes o rolê era WhatsApp e achismo. Agora o clube inteiro no mapa, com rota e SOS. Mudou o padrão da gente.",
+    name: "Carlos Menezes",
+    role: "Presidente · MC Serra",
   },
   {
-    index: "03",
-    title: "Oficina do clube",
-    meta: "Garagem · Preparo · Iron",
-    image: "/images/brutal/asset-14.jpeg",
-    alt: "Harleys preparadas em oficina oficial",
+    quote:
+      "Navegação de verdade no guidão e o grupo sincronizado. Sem app generico. Feito pra quem roda junto.",
+    name: "Ana Ribeiro",
+    role: "Capitã de rota · Night Riders SP",
   },
   {
-    index: "04",
-    title: "Detalhe de motor",
-    meta: "Revolution Max · Força",
-    image: "/images/brutal/hd-engine.jpg",
-    alt: "Close profissional do motor Revolution Max",
+    quote:
+      "O SOS com GPS foi o que fechou. Segurança pro clube sem drama. Interface limpa, dark, direta.",
+    name: "Diego Santos",
+    role: "Fundador · Asfalto Norte",
   },
 ] as const;
 
 export const FAQ = [
   {
     q: "O Chevron é para quem?",
-    a: "Para motoclubes e grupos que rodam juntos no Brasil. Quem quer ver o clube no mapa, navegar e se comunicar sem improvisar com WhatsApp.",
+    a: "Para motoclubes e grupos que rodam juntos no Brasil. Quem quer mapa ao vivo, navegação e comunicação sem improvisar no WhatsApp.",
   },
   {
     q: "Funciona no iPhone e no Android?",
-    a: "Sim. Apps nativos nas duas plataformas, conectados ao mesmo backend — localização, chat e SOS em tempo real.",
+    a: "Sim. Apps nativos nas duas plataformas, no mesmo backend — localização, chat e SOS em tempo real.",
   },
   {
-    q: "Como entro no clube dos irmãos?",
-    a: "Crie um motoclube ou entre com o código de convite. Nas rotas em grupo, o código da viagem também entra no mapa em segundos.",
+    q: "Como entro no clube?",
+    a: "Crie um motoclube ou entre com o código de convite. Nas rotas em grupo, o código da viagem coloca o clube no mapa em segundos.",
   },
   {
     q: "O SOS alerta quem?",
-    a: "Os membros do seu clube, com localização em tempo real. Hold-to-send pra evitar disparo acidental.",
-  },
-  {
-    q: "Precisa de plano pago?",
-    a: "Há plano gratuito com limites mensais de rotas e upgrade PRO pra quem roda mais. Detalhes dentro do app.",
+    a: "Os membros do seu clube, com localização em tempo real. Hold-to-send evita disparo acidental.",
   },
 ] as const;

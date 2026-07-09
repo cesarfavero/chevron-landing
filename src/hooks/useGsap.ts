@@ -13,18 +13,13 @@ export function useGsap(setup: () => void | (() => void), deps: unknown[] = []) 
       gsap.registerPlugin(ScrollTrigger);
       registered = true;
     }
-
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (prefersReduced) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const cleanup = setup();
     ScrollTrigger.refresh();
 
     return () => {
       if (typeof cleanup === "function") cleanup();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);

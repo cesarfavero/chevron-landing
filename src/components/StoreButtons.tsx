@@ -18,19 +18,12 @@ function PlayIcon({ className = "h-6 w-6" }: { className?: string }) {
   );
 }
 
-export function StoreButtons({
-  className = "",
-  light = false,
-}: {
-  className?: string;
-  light?: boolean;
-}) {
-  const base = light
-    ? "store-cta inline-flex items-center gap-3 border border-black bg-black px-5 py-3.5 text-white"
-    : "store-cta inline-flex items-center gap-3 border border-white bg-transparent px-5 py-3.5 text-white";
+export function StoreButtons({ className = "" }: { className?: string }) {
+  const base =
+    "group inline-flex items-center gap-3 rounded-full border border-white px-8 py-5 text-xs font-bold uppercase tracking-widest transition-colors duration-500 hover:bg-white hover:text-black";
 
   return (
-    <div className={`flex flex-wrap gap-3 ${className}`}>
+    <div className={`flex flex-wrap items-center justify-center gap-4 ${className}`}>
       <a
         href={STORE_LINKS.appStore}
         target="_blank"
@@ -38,14 +31,9 @@ export function StoreButtons({
         className={base}
         aria-label="Baixar na App Store"
       >
-        <AppleIcon className="h-7 w-7" />
-        <span className="text-left leading-tight">
-          <span className="block text-[10px] uppercase tracking-widest opacity-60">
-            Baixar na
-          </span>
-          <span className="block text-sm font-semibold tracking-tight">
-            App Store
-          </span>
+        <AppleIcon className="h-6 w-6" />
+        <span className="inline-block transition-transform duration-300 group-hover:scale-95">
+          App Store
         </span>
       </a>
       <a
@@ -55,14 +43,9 @@ export function StoreButtons({
         className={base}
         aria-label="Disponível no Google Play"
       >
-        <PlayIcon className="h-7 w-7" />
-        <span className="text-left leading-tight">
-          <span className="block text-[10px] uppercase tracking-widest opacity-60">
-            Disponível no
-          </span>
-          <span className="block text-sm font-semibold tracking-tight">
-            Google Play
-          </span>
+        <PlayIcon className="h-6 w-6" />
+        <span className="inline-block transition-transform duration-300 group-hover:scale-95">
+          Google Play
         </span>
       </a>
     </div>

@@ -2,75 +2,37 @@
 
 import Image from "next/image";
 import { StoreButtons } from "./StoreButtons";
-import { useGsap, gsap } from "@/hooks/useGsap";
 
 export function Download() {
-  useGsap(() => {
-    gsap.fromTo(
-      ".contact-title",
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: "#baixar", start: "top 70%" },
-      },
-    );
-    gsap.fromTo(
-      ".contact-form-wrap",
-      { y: 30, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        delay: 0.1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: "#baixar", start: "top 65%" },
-      },
-    );
-    gsap.to(".contact-bg-parallax img", {
-      yPercent: -18,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#baixar",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-  }, []);
-
   return (
     <section
-      id="baixar"
-      className="contact-container relative min-h-[80vh] overflow-hidden border-t border-white/10"
+      id="contact"
+      className="contact-container relative overflow-hidden border-t border-white/20 bg-[#111] px-6 py-32 text-white md:px-12"
     >
-      <div className="contact-bg-parallax absolute inset-0">
+      <div className="contact-bg-parallax pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-[0.08]">
         <Image
           src="/images/brutal/asset-7.jpeg"
           alt=""
           fill
           sizes="100vw"
-          className="object-cover grayscale contrast-125 opacity-40"
+          className="h-[120%] w-full object-cover grayscale blur-sm"
         />
-        <div className="absolute inset-0 bg-black/75" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-5xl flex-col justify-center px-6 py-28 md:px-12">
-        <p className="mb-4 text-xs uppercase tracking-widest text-white/50">
+      <div className="relative z-10 flex flex-col items-center text-center">
+        <span className="mb-8 block text-xs uppercase tracking-widest opacity-50">
           (006 — Download)
-        </p>
-        <h2 className="contact-title max-w-3xl text-5xl font-semibold uppercase leading-[0.9] tracking-tighter text-white md:text-7xl lg:text-8xl">
-          Baixe o Chevron.
+        </span>
+        <h2 className="contact-title mb-16 text-6xl font-semibold uppercase leading-[0.8] tracking-tighter mix-blend-difference md:text-9xl">
+          Baixe o
           <br />
-          Chame o clube.
+          Chevron
         </h2>
-        <p className="contact-form-wrap mt-6 max-w-lg text-sm uppercase tracking-wide text-white/60 md:text-base">
-          iOS e Android. Rotas em grupo, navegação, chat e SOS — o motoclube no
-          mapa, de verdade.
-        </p>
-        <div className="contact-form-wrap mt-10">
+        <div className="contact-form-wrap mx-auto flex w-full max-w-2xl flex-col items-center gap-12">
+          <p className="max-w-md text-sm uppercase tracking-widest opacity-60">
+            iOS e Android. Rotas em grupo, navegação, chat e SOS — o motoclube
+            no mapa.
+          </p>
           <StoreButtons />
         </div>
       </div>

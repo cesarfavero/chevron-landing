@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chevron — Motoclubes no mapa",
     description:
-      "O app nativo pra quem roda em clube: rotas em grupo, navegação, chat e SOS.",
-    type: "website",
+      "App nativo pra quem roda em clube: rotas em grupo, navegação, chat e SOS.",
     locale: "pt_BR",
-    images: [{ url: "/images/brutal/asset-8.jpeg", width: 2328, height: 1310 }],
+    type: "website",
+    images: [{ url: "/images/brutal/asset-8.jpeg" }],
   },
   icons: {
     icon: "/images/app-icon.png",
@@ -32,7 +32,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth h-full antialiased">
-      <body className="min-h-full bg-[#050505] text-[#f5f5f5]">{children}</body>
+      <body className="min-h-full selection:bg-white selection:text-black">
+        {children}
+      </body>
     </html>
   );
 }
