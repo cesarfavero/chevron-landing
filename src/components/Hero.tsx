@@ -74,7 +74,7 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 text-[11px] font-medium tracking-[0.2em] text-primary uppercase backdrop-blur-md"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 text-[12px] font-medium tracking-wide text-primary backdrop-blur-md"
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inset-0 animate-ping rounded-full bg-primary/50" />
@@ -87,20 +87,20 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.06, ease }}
-            className="font-display text-[3.35rem] leading-[0.94] tracking-[0.03em] text-white sm:text-6xl md:text-7xl lg:text-[5.4rem]"
+            className="font-display text-[2.85rem] font-extrabold leading-[0.96] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-[4.75rem]"
           >
-            A ESTRADA
+            A estrada
             <br />
-            NÃO ESPERA.
+            não espera.
             <br />
-            <span className="neon-text soft-glow">O PACK SIM.</span>
+            <span className="neon-text soft-glow">O pack sim.</span>
           </motion.h1>
 
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.14, ease }}
-            className="mt-6 max-w-md text-[15px] leading-relaxed text-secondary md:text-base"
+            className="mt-6 max-w-md text-[15px] font-normal leading-[1.65] text-secondary md:text-[16px]"
           >
             Rotas em grupo, navegação turn-by-turn, chat ao vivo e SOS.
             Nativo, limpo e feito pro asfalto.
@@ -172,10 +172,12 @@ export function Hero() {
                 transition={{ duration: 0.55, delay: 0.4 + i * 0.07, ease }}
                 className="border-white/[0.05] px-5 py-6 md:border-r md:px-7 md:last:border-r-0 [&:nth-child(odd)]:border-r [&:nth-child(-n+2)]:border-b md:[&:nth-child(-n+2)]:border-b-0"
               >
-                <p className="font-display text-xl tracking-wider text-primary md:text-2xl">
+                <p className="font-display text-lg font-semibold tracking-tight text-primary md:text-xl">
                   {stat.value}
                 </p>
-                <p className="mt-1.5 text-xs text-muted">{stat.label}</p>
+                <p className="mt-1.5 text-[12px] leading-snug text-muted">
+                  {stat.label}
+                </p>
               </motion.div>
             ))}
           </div>

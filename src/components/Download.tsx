@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import {
   motion,
   useScroll,
@@ -8,6 +7,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { StoreButtons } from "./StoreButtons";
 import { SectionReveal } from "./SectionReveal";
 
@@ -50,23 +50,23 @@ export function Download() {
             style={reduce ? undefined : { y: cardY }}
             className="glass-panel-strong rounded-[2rem] px-6 py-12 text-center md:px-12 md:py-16"
           >
-            <div className="mx-auto mb-7 flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(0,255,136,0.28)] ring-1 ring-white/10">
+            <div className="mx-auto mb-7 flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-[22%] shadow-[0_0_40px_rgba(0,255,136,0.22)] ring-1 ring-white/10">
               <Image
                 src="/images/app-icon.png"
                 alt="Ícone Chevron"
-                width={64}
-                height={64}
+                width={72}
+                height={72}
                 className="h-full w-full object-cover"
               />
             </div>
 
-            <h2 className="font-display text-4xl tracking-[0.04em] text-white sm:text-5xl md:text-6xl">
-              BAIXE O CHEVRON.
+            <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white sm:text-5xl md:text-[3.25rem]">
+              Baixe o Chevron.
               <br />
-              <span className="neon-text soft-glow">DOMINE A ESTRADA.</span>
+              <span className="neon-text soft-glow">Domine a estrada.</span>
             </h2>
 
-            <p className="mx-auto mt-5 max-w-md text-sm text-secondary md:text-base">
+            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-secondary">
               iOS e Android. Rotas, navegação, chat e SOS — o pack no bolso.
             </p>
 

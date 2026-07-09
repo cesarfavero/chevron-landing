@@ -26,8 +26,8 @@
   --color-elevated: var(--chevron-elevated);
   --color-muted: var(--chevron-text-muted);
   --color-secondary: var(--chevron-text-secondary);
-  --font-sans: var(--font-poppins);
-  --font-display: var(--font-bebas);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-syne);
 }
 
 * {
@@ -41,10 +41,27 @@ html {
 body {
   background: var(--chevron-bg);
   color: var(--chevron-text);
-  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
   min-height: 100%;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01" on, "cv11" on;
+}
+
+.font-display {
+  font-family: var(--font-syne), var(--font-inter), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+/* Wordmark optical balance */
+.brand-wordmark {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
 ::selection {

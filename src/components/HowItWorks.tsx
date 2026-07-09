@@ -28,13 +28,13 @@ export function HowItWorks() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
         <SectionReveal className="mb-16 text-center">
-          <p className="mb-3 text-[11px] font-medium tracking-[0.28em] text-primary uppercase">
+          <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
             Como funciona
           </p>
-          <h2 className="font-display text-4xl tracking-[0.04em] text-white md:text-5xl lg:text-6xl">
-            TRÊS PASSOS.
+          <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white md:text-5xl lg:text-[3.5rem]">
+            Três passos.
             <br />
-            <span className="text-white/35">ZERO FRICÇÃO.</span>
+            <span className="text-white/35">Zero fricção.</span>
           </h2>
         </SectionReveal>
 
@@ -63,13 +63,13 @@ export function HowItWorks() {
                     <div className="relative mb-6 flex h-14 w-14 items-center justify-center">
                       <div className="absolute inset-0 rounded-full bg-primary/10 blur-md" />
                       <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-primary/25 bg-black/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-                        <span className="font-display text-xl tracking-widest text-primary">
+                        <span className="font-display text-lg font-semibold tabular-nums text-primary">
                           {step.step}
                         </span>
                       </div>
                     </div>
-                    <h3 className="font-display text-xl tracking-[0.08em] text-white md:text-2xl">
-                      {step.title.toUpperCase()}
+                    <h3 className="font-display text-lg font-semibold tracking-tight text-white md:text-xl">
+                      {step.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-secondary">
                       {step.description}

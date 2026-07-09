@@ -1,23 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Bebas_Neue, Poppins } from "next/font/google";
+import { Inter, Syne } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://chevron.caesarstechnology.com"),
+  metadataBase: new URL("https://chevron-landing.vercel.app"),
   title: "Chevron — O app dos motoclubes brasileiros",
   description:
     "Rotas em grupo, navegação turn-by-turn, chat em tempo real e SOS de emergência. Baixe o Chevron na App Store e no Google Play.",
@@ -48,13 +48,16 @@ export const metadata: Metadata = {
     images: ["/images/hero-moto.jpg"],
   },
   icons: {
-    icon: "/images/app-icon.png",
-    apple: "/images/app-icon.png",
+    icon: [
+      { url: "/images/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/app-icon.png", sizes: "1024x1024", type: "image/png" },
+    ],
+    apple: [{ url: "/images/apple-touch-icon.png", sizes: "180x180" }],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#030303",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -68,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${poppins.variable} ${bebas.variable} h-full antialiased`}
+      className={`${inter.variable} ${syne.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>

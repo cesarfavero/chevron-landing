@@ -63,13 +63,13 @@ export function Experience() {
 
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-2 md:gap-20 md:px-8">
         <SectionReveal>
-          <p className="mb-3 text-[11px] font-medium tracking-[0.28em] text-primary uppercase">
+          <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
             Experiência
           </p>
-          <h2 className="font-display text-4xl tracking-[0.04em] text-white md:text-5xl lg:text-6xl">
-            FEITO PARA
+          <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white md:text-5xl lg:text-[3.5rem]">
+            Feito para
             <br />
-            <span className="neon-text soft-glow">O ASFALTO.</span>
+            <span className="neon-text soft-glow">o asfalto.</span>
           </h2>
           <p className="mt-5 max-w-md text-[15px] leading-relaxed text-secondary">
             Profundidade visual, glass sutil e precisão de navegação — a energia
@@ -84,14 +84,14 @@ export function Experience() {
                   glowColor="rgba(0, 255, 136, 0.1)"
                 >
                   <div className="flex items-center gap-4 px-5 py-4">
-                    <span className="font-display text-lg text-primary/80">
+                    <span className="font-display text-base font-semibold tabular-nums text-primary/80">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div>
-                      <h3 className="text-sm font-semibold text-white">
+                      <h3 className="text-sm font-semibold tracking-tight text-white">
                         {item.title}
                       </h3>
-                      <p className="mt-0.5 text-sm text-secondary">
+                      <p className="mt-0.5 text-sm leading-relaxed text-secondary">
                         {item.text}
                       </p>
                     </div>
@@ -147,11 +147,11 @@ export function Experience() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="absolute bottom-16 left-0 glass-panel-strong rounded-2xl px-4 py-3 shadow-xl"
           >
-            <p className="text-[10px] tracking-[0.2em] text-primary uppercase">
+            <p className="text-[11px] font-medium tracking-wide text-primary">
               Ao vivo
             </p>
-            <p className="font-display text-lg tracking-wide text-white">
-              PACK ONLINE
+            <p className="font-display text-base font-semibold tracking-tight text-white">
+              Pack online
             </p>
           </motion.div>
         </div>

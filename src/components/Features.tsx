@@ -22,13 +22,13 @@ export function Features() {
         <SectionReveal>
           <div className="mb-14 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between">
             <div className="max-w-xl">
-              <p className="mb-3 text-[11px] font-medium tracking-[0.28em] text-primary uppercase">
+              <p className="mb-3 text-[12px] font-medium tracking-wide text-primary">
                 Recursos
               </p>
-              <h2 className="font-display text-4xl tracking-[0.04em] text-white md:text-5xl lg:text-6xl">
-                TUDO QUE O PACK
+              <h2 className="font-display text-[2.35rem] font-bold tracking-[-0.035em] text-white md:text-5xl lg:text-[3.5rem]">
+                Tudo que o pack
                 <br />
-                <span className="text-white/40">PRECISA NA ESTRADA</span>
+                <span className="text-white/40">precisa na estrada</span>
               </h2>
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-secondary md:pb-1 md:text-[15px]">
@@ -67,7 +67,7 @@ export function Features() {
                       <FeatureIcon name={feature.icon} className="h-5 w-5" />
                     </div>
                     {feature.featured && (
-                      <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-medium tracking-[0.18em] text-primary uppercase">
+                      <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-medium tracking-wide text-primary">
                         Core
                       </span>
                     )}
@@ -75,13 +75,13 @@ export function Features() {
 
                   <div className={feature.featured ? "mt-auto pt-10" : "mt-6"}>
                     <h3
-                      className={`font-display tracking-[0.06em] text-white ${
+                      className={`font-display font-semibold tracking-tight text-white ${
                         feature.featured
-                          ? "text-3xl md:text-4xl"
-                          : "text-xl md:text-2xl"
+                          ? "text-2xl md:text-3xl"
+                          : "text-lg md:text-xl"
                       }`}
                     >
-                      {feature.title.toUpperCase()}
+                      {feature.title}
                     </h3>
                     <p
                       className={`mt-3 leading-relaxed text-secondary ${
