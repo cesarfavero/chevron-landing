@@ -5,7 +5,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/[0.06] bg-black">
+    <footer className="relative border-t border-white/[0.05] bg-black/40">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-5 py-12 md:flex-row md:items-start md:justify-between md:px-8">
         <div>
           <div className="flex items-center gap-2.5">
@@ -27,7 +27,7 @@ export function Footer() {
 
         <div className="flex flex-wrap gap-12">
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.18em] text-muted uppercase">
+            <p className="text-[11px] font-medium tracking-[0.2em] text-muted uppercase">
               Navegação
             </p>
             <ul className="mt-3 space-y-2">
@@ -44,7 +44,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.18em] text-muted uppercase">
+            <p className="text-[11px] font-medium tracking-[0.2em] text-muted uppercase">
               Plataformas
             </p>
             <ul className="mt-3 space-y-2 text-sm text-secondary">
@@ -55,7 +55,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/[0.06]">
+      <div className="border-t border-white/[0.05]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-5 text-xs text-muted md:flex-row md:px-8">
           <p>© {year} Chevron · Caesars Technology</p>
           <p className="tracking-widest uppercase">Ride free. Ride together.</p>

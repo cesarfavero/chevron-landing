@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 
-const ease = [0.25, 0.1, 0.25, 1] as const;
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function SectionReveal({
   children,
@@ -23,10 +23,38 @@ export function SectionReveal({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 36, filter: "blur(6px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: 0.2, margin: "0px 0px -8% 0px" }}
+      transition={{ duration: 0.85, delay, ease }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function ParallaxBlock({
+  children,
+  className = "",
+  offset = 40,
+}: {
+  children: ReactNode;
+  className?: string;
+  offset?: number;
+}) {
+  const reduce = useReducedMotion();
+
+  if (reduce) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0.4, y: offset }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15, margin: "0px 0px -32px 0px" }}
-      transition={{ duration: 0.6, delay, ease }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.9, ease }}
     >
       {children}
     </motion.div>
@@ -36,7 +64,7 @@ export function SectionReveal({
 export function StaggerContainer({
   children,
   className = "",
-  stagger = 0.08,
+  stagger = 0.09,
 }: {
   children: ReactNode;
   className?: string;
@@ -49,6 +77,7 @@ export function StaggerContainer({
     show: {
       transition: {
         staggerChildren: reduce ? 0 : stagger,
+        delayChildren: 0.05,
       },
     },
   };
@@ -59,7 +88,7 @@ export function StaggerContainer({
       variants={variants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.1, margin: "0px 0px -32px 0px" }}
+      viewport={{ once: true, amount: 0.12, margin: "0px 0px -6% 0px" }}
     >
       {children}
     </motion.div>
@@ -76,11 +105,14 @@ export function StaggerItem({
   const reduce = useReducedMotion();
 
   const variants: Variants = {
-    hidden: reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
+    hidden: reduce
+      ? { opacity: 1, y: 0 }
+      : { opacity: 0, y: 28, scale: 0.98 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.55, ease },
+      scale: 1,
+      transition: { duration: 0.7, ease },
     },
   };
 

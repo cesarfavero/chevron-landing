@@ -1,40 +1,85 @@
 "use client";
 
 import { STEPS } from "@/lib/constants";
+import { GlassCard } from "./GlassCard";
 import { SectionReveal, StaggerContainer, StaggerItem } from "./SectionReveal";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 
 export function HowItWorks() {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const lineScale = useTransform(scrollYProgress, [0.15, 0.55], [0, 1]);
+
   return (
-    <section id="como-funciona" className="relative py-24 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <SectionReveal className="mb-14 text-center">
-          <p className="mb-3 text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
+    <section
+      id="como-funciona"
+      ref={ref}
+      className="relative py-28 md:py-36"
+    >
+      <div
+        className="pointer-events-none absolute right-0 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-primary/[0.035] blur-[110px]"
+        aria-hidden
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
+        <SectionReveal className="mb-16 text-center">
+          <p className="mb-3 text-[11px] font-medium tracking-[0.28em] text-primary uppercase">
             Como funciona
           </p>
-          <h2 className="font-display text-4xl tracking-wide text-white md:text-5xl lg:text-6xl">
+          <h2 className="font-display text-4xl tracking-[0.04em] text-white md:text-5xl lg:text-6xl">
             TRÊS PASSOS.
             <br />
-            <span className="text-secondary">ZERO FRICÇÃO.</span>
+            <span className="text-white/35">ZERO FRICÇÃO.</span>
           </h2>
         </SectionReveal>
 
-        <StaggerContainer className="grid gap-4 md:grid-cols-3">
-          {STEPS.map((step) => (
-            <StaggerItem key={step.step}>
-              <div className="h-full rounded-2xl border border-white/[0.07] bg-surface/50 p-8 text-center transition hover:border-primary/20">
-                <span className="font-display text-3xl tracking-widest text-primary">
-                  {step.step}
-                </span>
-                <h3 className="mt-4 font-display text-xl tracking-wider text-white">
-                  {step.title.toUpperCase()}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-secondary">
-                  {step.description}
-                </p>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        <div className="relative">
+          {/* Animated connecting line (desktop) */}
+          <div className="pointer-events-none absolute left-[16%] right-[16%] top-[2.75rem] hidden h-px overflow-hidden md:block">
+            <div className="h-full w-full bg-white/[0.06]" />
+            <motion.div
+              style={
+                reduce
+                  ? { scaleX: 1 }
+                  : { scaleX: lineScale, transformOrigin: "left center" }
+              }
+              className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/50 to-primary/10"
+            />
+          </div>
+
+          <StaggerContainer className="grid gap-4 md:grid-cols-3 md:gap-5">
+            {STEPS.map((step) => (
+              <StaggerItem key={step.step}>
+                <GlassCard
+                  className="h-full text-center"
+                  glowColor="rgba(0, 255, 136, 0.12)"
+                >
+                  <div className="flex h-full flex-col items-center px-6 py-9 md:px-8">
+                    <div className="relative mb-6 flex h-14 w-14 items-center justify-center">
+                      <div className="absolute inset-0 rounded-full bg-primary/10 blur-md" />
+                      <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-primary/25 bg-black/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                        <span className="font-display text-xl tracking-widest text-primary">
+                          {step.step}
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="font-display text-xl tracking-[0.08em] text-white md:text-2xl">
+                      {step.title.toUpperCase()}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-secondary">
+                      {step.description}
+                    </p>
+                  </div>
+                </GlassCard>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
       </div>
     </section>
   );

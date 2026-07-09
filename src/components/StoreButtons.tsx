@@ -41,7 +41,7 @@ export function StoreButtons({
         href={STORE_LINKS.appStore}
         target="_blank"
         rel="noopener noreferrer"
-        className={`store-btn glass-strong inline-flex items-center gap-3 rounded-2xl ${pad} border border-white/10`}
+        className={`store-btn glass-panel-strong inline-flex items-center gap-3 rounded-2xl ${pad}`}
         aria-label="Baixar na App Store"
       >
         <AppleIcon className={size === "lg" ? "h-8 w-8" : "h-7 w-7"} />
@@ -49,7 +49,9 @@ export function StoreButtons({
           <span className={`block uppercase tracking-wider text-secondary ${sub}`}>
             Baixar na
           </span>
-          <span className={`block font-semibold text-white ${title}`}>App Store</span>
+          <span className={`block font-semibold text-white ${title}`}>
+            App Store
+          </span>
         </span>
       </a>
 
@@ -57,7 +59,7 @@ export function StoreButtons({
         href={STORE_LINKS.playStore}
         target="_blank"
         rel="noopener noreferrer"
-        className={`store-btn glass-strong inline-flex items-center gap-3 rounded-2xl ${pad} border border-white/10`}
+        className={`store-btn glass-panel-strong inline-flex items-center gap-3 rounded-2xl ${pad}`}
         aria-label="Disponível no Google Play"
       >
         <PlayIcon className={size === "lg" ? "h-8 w-8" : "h-7 w-7"} />
@@ -65,7 +67,9 @@ export function StoreButtons({
           <span className={`block uppercase tracking-wider text-secondary ${sub}`}>
             Disponível no
           </span>
-          <span className={`block font-semibold text-white ${title}`}>Google Play</span>
+          <span className={`block font-semibold text-white ${title}`}>
+            Google Play
+          </span>
         </span>
       </a>
     </div>
